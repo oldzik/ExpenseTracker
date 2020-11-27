@@ -1,0 +1,9 @@
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Domain\bin\Debug\netcoreapp3.1\ExpenseTracker.Domain.deps.json
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Domain\bin\Debug\netcoreapp3.1\ExpenseTracker.Domain.dll
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Domain\obj\Debug\netcoreapp3.1\ExpenseTracker.Domain.csprojAssemblyReference.cache
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Domain\obj\Debug\netcoreapp3.1\ExpenseTracker.Domain.AssemblyInfoInputs.cache
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Domain\obj\Debug\netcoreapp3.1\ExpenseTracker.Domain.AssemblyInfo.cs
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Domain\bin\Debug\netcoreapp3.1\ExpenseTracker.Domain.pdb
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Domain\obj\Debug\netcoreapp3.1\ExpenseTracker.Domain.csproj.CoreCompileInputs.cache
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Domain\obj\Debug\netcoreapp3.1\ExpenseTracker.Domain.dll
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Domain\obj\Debug\netcoreapp3.1\ExpenseTracker.Domain.pdb
