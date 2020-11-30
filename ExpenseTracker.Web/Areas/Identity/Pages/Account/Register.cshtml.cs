@@ -24,6 +24,8 @@ namespace ExpenseTracker.Web.Areas.Identity.Pages.Account
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IBudgetService _budgetService;
+        private readonly IMainCService _mainCService;
+        private readonly IDetailedCService _detailedCService;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
@@ -31,12 +33,16 @@ namespace ExpenseTracker.Web.Areas.Identity.Pages.Account
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IBudgetService budgetService,
+            IMainCService mainCService,
+            IDetailedCService detailedCService,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _budgetService = budgetService;
+            _mainCService = mainCService;
+            _detailedCService = detailedCService;
             _logger = logger;
             _emailSender = emailSender;
         }
@@ -85,8 +91,10 @@ namespace ExpenseTracker.Web.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User created a new account with password.");
 
-                    //moj kod do utworzenia budgetu
+                    //moj kod do utworzenia budgetu,main cateogries i detailed categories dla nowego usera
                     _budgetService.CreateBudgetForNewUser(user.Id);
+                    _mainCService.CreateMainCategoriesForNewUser(user.Id);
+                    _detailedCService.CreateDetailedCategoriesForNewUser(user.Id);
 
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

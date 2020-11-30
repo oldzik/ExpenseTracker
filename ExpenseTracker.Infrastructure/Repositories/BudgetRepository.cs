@@ -15,6 +15,12 @@ namespace ExpenseTracker.Infrastructure.Repositories
             _context = context;
         }
 
+        public void UpdateAmount(Budget budget)
+        {
+            _context.Budgets.Update(budget);
+            _context.SaveChanges();
+        }
+
         public int AddBudget(Budget budget)
         {
             _context.Budgets.Add(budget);
@@ -26,6 +32,14 @@ namespace ExpenseTracker.Infrastructure.Repositories
         {
             var budget = _context.Budgets.FirstOrDefault(a => a.ApplicationUserRef == userId);
             return budget;
+        }
+
+
+        public Budget GetBudgetById(int id)
+        {
+            Budget budget = _context.Budgets.FirstOrDefault(a => a.Id == id);
+            return budget;
+
         }
     }
 }

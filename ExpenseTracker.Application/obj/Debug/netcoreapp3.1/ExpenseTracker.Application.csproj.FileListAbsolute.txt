@@ -6,7 +6,7 @@ C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Application\bin\Debug\netcor
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Application\bin\Debug\netcoreapp3.1\ExpenseTracker.Application.dll
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Application\bin\Debug\netcoreapp3.1\ExpenseTracker.Application.pdb
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Application\bin\Debug\netcoreapp3.1\ExpenseTracker.Domain.pdb
-C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Application\obj\Debug\netcoreapp3.1\ExpenseTracker.Application.csproj.CoreCompileInputs.cache
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Application\obj\Debug\netcoreapp3.1\ExpenseTracker.Application.csproj.CopyComplete
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Application\obj\Debug\netcoreapp3.1\ExpenseTracker.Application.dll
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Application\obj\Debug\netcoreapp3.1\ExpenseTracker.Application.pdb
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Application\obj\Debug\netcoreapp3.1\ExpenseTracker.Application.csproj.CoreCompileInputs.cache

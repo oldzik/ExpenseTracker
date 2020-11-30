@@ -7,30 +7,31 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="CreateExpense">Dodaj nowy wydatek</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                No.
+                Lp.
             </th>
             <th>
-                Name
+                Nazwa
             </th>
             <th>
-                Amount
+                Kwota
             </th>
             <th>
-                Date
+                Data
             </th>
             <th>
-                Category
+                Kategoria
             </th>
         </tr>
     </thead>
     <tbody>
-        @{int num = 0; }
+        @{int num = 0;
+            string date = "";}
         @foreach (var item in Model.Expenses)
         {
             <tr>
@@ -45,15 +46,15 @@
                     @Html.DisplayFor(modelItem => item.Amount)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Date.ToString("d"))
+                    @{date = item.Date.ToString("d");}
+                    @date
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Category)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Edytuj", "EditExpense", new { expenseId=item.Id }) |
+                    @Html.ActionLink("Usuń", "DeleteExpense", new { expenseId=item.Id })
                 </td>
             </tr>
         }

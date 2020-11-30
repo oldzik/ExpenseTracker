@@ -9,5 +9,9 @@ namespace ExpenseTracker.Domain.Interface
     public interface IExpenseRepository
     {
         public IQueryable<Expense> GetAllExpensesOfBudget(int budgetId);
+        public int AddExpense(Expense exp);
+        public void DeleteExpense(int expenseId);
+        public Expense GetExpenseById(int expenseId);
+        public void UpdateExpense(Expense expense);
     }
 }

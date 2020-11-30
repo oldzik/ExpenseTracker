@@ -14,6 +14,9 @@ using Microsoft.Extensions.Hosting;
 using ExpenseTracker.Infrastructure;
 using ExpenseTracker.Domain.Model.Entity;
 using ExpenseTracker.Application;
+using FluentValidation.AspNetCore;
+using ExpenseTracker.Application.ViewModels.Expense;
+using FluentValidation;
 
 namespace ExpenseTracker.Web
 {
@@ -38,9 +41,12 @@ namespace ExpenseTracker.Web
             services.AddApplication();
             services.AddInfrastructure();
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddFluentValidation(fv => fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false);
             services.AddRazorPages();
+
+            services.AddTransient<IValidator<NewExpenseVm>, Application.ViewModels.Expense.NewExpenseVm.NewExpenseValidator>();
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

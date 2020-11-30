@@ -445,3 +445,17 @@ C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\Razor\Views\Expense\Index.cshtml.g.cs
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\System.Web.Mvc.dll
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\System.Web.Razor.dll
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\System.Web.Helpers.dll
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\System.Web.WebPages.Deployment.dll
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\System.Web.WebPages.Razor.dll
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\System.Web.WebPages.dll
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\Microsoft.Web.Infrastructure.dll
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\Razor\Views\Expense\CreateExpense.cshtml.g.cs
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\Razor\Views\Expense\EditExpense.cshtml.g.cs
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\FluentValidation.dll
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\FluentValidation.AspNetCore.dll
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\FluentValidation.DependencyInjectionExtensions.dll
