@@ -1,0 +1,45 @@
+﻿@model ExpenseTracker.Application.ViewModels.MainCategory.ListMainCatForListVm
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="CreateMainCategory">Dodaj główną kategorię</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Lp.
+            </th>
+            <th>
+                Nazwa
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{int num = 0;} 
+@foreach (var item in Model.MainCategories) {
+        <tr>
+            <td>
+                @{ num++;}
+                @num.
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edytuj", "EditMainCategory", new { mainCategoryId = item.Id  }) |
+                @Html.ActionLink("Usuń", "DeleteMainCategory", new { mainCategoryId = item.Id  }) |
+                @Html.ActionLink("Sprawdź podkategorie", "DetailedCategory", new {  mainCategoryId=item.Id  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<p>
+    <a asp-controller="Expense" asp-action="Index">Wróc do listy wydatków</a>
+</p>

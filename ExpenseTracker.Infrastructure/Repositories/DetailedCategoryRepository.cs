@@ -23,6 +23,12 @@ namespace ExpenseTracker.Infrastructure.Repositories
             _context.SaveChanges();
         }
 
+        public IQueryable<DetailedCategory> GetDetailedCategoriesOfMainCategory(int mainCategoryId)
+        {
+            var categories = _context.DetailedCategories.Where(c => c.MainCategoryId == mainCategoryId);
+            return categories;
+        }
+
         public IEnumerable<SelectListItem> GetDetailedCategoriesOfUser(string userId)
         {
             List<SelectListItem> categories = _context.DetailedCategories

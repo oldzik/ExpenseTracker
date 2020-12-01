@@ -12,5 +12,6 @@ namespace ExpenseTracker.Domain.Interface
     {
         public void AddDetailedCategories(List<DetailedCategory> detailedCategories);
         public IEnumerable<SelectListItem> GetDetailedCategoriesOfUser(string userId);
+        IQueryable<DetailedCategory> GetDetailedCategoriesOfMainCategory(int mainCategoryId);
     }
 }

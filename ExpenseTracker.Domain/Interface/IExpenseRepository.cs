@@ -13,5 +13,6 @@ namespace ExpenseTracker.Domain.Interface
         public void DeleteExpense(int expenseId);
         public Expense GetExpenseById(int expenseId);
         public void UpdateExpense(Expense expense);
+        IQueryable<Expense> GetAllExpensesOfDetailedCategory(int detailedCategoryId);
     }
 }

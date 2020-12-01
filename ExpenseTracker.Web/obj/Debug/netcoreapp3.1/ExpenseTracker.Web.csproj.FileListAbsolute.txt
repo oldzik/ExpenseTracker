@@ -411,9 +411,6 @@ C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\ExpenseTracker.Web.csprojAssemblyReference.cache
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\ExpenseTracker.Web.AssemblyInfoInputs.cache
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\ExpenseTracker.Web.AssemblyInfo.cs
-C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\ExpenseTracker.Web.csproj.CoreCompileInputs.cache
-C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\ExpenseTracker.Web.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\ExpenseTracker.Web.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\ExpenseTracker.Web.RazorAssemblyInfo.cache
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\ExpenseTracker.Web.RazorAssemblyInfo.cs
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\ExpenseTracker.Web.TagHelpers.input.cache
@@ -445,13 +442,6 @@ C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\Razor\Views\Expense\Index.cshtml.g.cs
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
-C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\System.Web.Mvc.dll
-C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\System.Web.Razor.dll
-C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\System.Web.Helpers.dll
-C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\System.Web.WebPages.Deployment.dll
-C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\System.Web.WebPages.Razor.dll
-C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\System.Web.WebPages.dll
-C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\Microsoft.Web.Infrastructure.dll
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\Razor\Views\Expense\CreateExpense.cshtml.g.cs
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
@@ -459,3 +449,11 @@ C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\FluentValidation.dll
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\FluentValidation.AspNetCore.dll
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\libman.json
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\ExpenseTracker.Web.csproj.CoreCompileInputs.cache
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\ExpenseTracker.Web.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\ExpenseTracker.Web.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\Razor\Views\Category\Index.cshtml.g.cs
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\Razor\Views\Category\DetailedCategory.cshtml.g.cs
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\Razor\Views\Category\CreateMainCategory.cshtml.g.cs
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\Razor\Views\Category\EditMainCategory.cshtml.g.cs

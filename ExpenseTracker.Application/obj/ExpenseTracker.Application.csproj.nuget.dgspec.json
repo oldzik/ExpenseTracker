@@ -67,9 +67,9 @@
               "target": "Package",
               "version": "[9.3.0, )"
             },
-            "Microsoft.AspNet.Mvc": {
+            "Microsoft.AspNetCore.Mvc": {
               "target": "Package",
-              "version": "[5.2.7, )"
+              "version": "[2.2.0, )"
             },
             "Microsoft.AspNetCore.Mvc.ViewFeatures": {
               "target": "Package",
@@ -137,9 +137,9 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "Microsoft.AspNet.Mvc": {
+            "Microsoft.AspNetCore.Mvc": {
               "target": "Package",
-              "version": "[5.2.7, )"
+              "version": "[2.2.0, )"
             },
             "Microsoft.AspNetCore.Mvc.ViewFeatures": {
               "target": "Package",

@@ -39,6 +39,12 @@ namespace ExpenseTracker.Infrastructure.Repositories
             return expenses;
         }
 
+        public IQueryable<Expense> GetAllExpensesOfDetailedCategory(int detailedCategoryId)
+        {
+            var expenses = _context.Expenses.Where(e => e.DetailedCategoryId == detailedCategoryId);
+            return expenses;
+        }
+
         public Expense GetExpenseById(int expenseId)
         {
             var expense = _context.Expenses.AsNoTracking().FirstOrDefault(e => e.Id == expenseId);

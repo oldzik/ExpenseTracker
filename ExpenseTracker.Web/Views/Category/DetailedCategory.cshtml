@@ -1,0 +1,48 @@
+﻿@model ExpenseTracker.Application.ViewModels.DetailedCategory.ListDetailedCatForListVm
+
+@{
+    ViewData["Title"] = "DetailedCategory";
+}
+
+<h1>DetailedCategory</h1>
+
+<p>
+    <a asp-action="Create">Dodaj nową podkategorię</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Lp.
+            </th>
+            <th>
+                Nazwa
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ int num = 0;}
+@foreach (var item in Model.DetailedCategories) {
+        <tr>
+            <td>
+                @{ num++;}
+                @num.
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<p>
+    <a asp-action="Index">Wróć do listy głównych kategorii</a>
+</p>
+<p>
+    <a asp-controller="Expense" asp-action="Index">Wróć do listy wydatków</a>
+</p>

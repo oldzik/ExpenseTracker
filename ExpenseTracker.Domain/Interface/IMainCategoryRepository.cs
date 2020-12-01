@@ -10,5 +10,9 @@ namespace ExpenseTracker.Domain.Interface
     {
         public void AddMainCategories(List<MainCategory> mainCategories);
         public IQueryable<MainCategory> GetAllMainCategoriesOfUser(string userId);
+        public int AddMainCategory(MainCategory mainCat);
+        MainCategory GetMainCategoryById(int mainCategoryId);
+        void UpdateMainCategory(MainCategory mainCategory);
+        void DeleteMainCategory(int mainCategoryId);
     }
 }

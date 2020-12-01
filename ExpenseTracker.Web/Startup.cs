@@ -17,6 +17,8 @@ using ExpenseTracker.Application;
 using FluentValidation.AspNetCore;
 using ExpenseTracker.Application.ViewModels.Expense;
 using FluentValidation;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 
 namespace ExpenseTracker.Web
 {
@@ -41,10 +43,9 @@ namespace ExpenseTracker.Web
             services.AddApplication();
             services.AddInfrastructure();
 
-            services.AddControllersWithViews().AddFluentValidation(fv => fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false);
+            services.AddControllersWithViews();
             services.AddRazorPages();
 
-            services.AddTransient<IValidator<NewExpenseVm>, Application.ViewModels.Expense.NewExpenseVm.NewExpenseValidator>();
         }
 
 
@@ -77,6 +78,7 @@ namespace ExpenseTracker.Web
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
         }
     }
 }

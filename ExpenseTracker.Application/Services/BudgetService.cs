@@ -5,6 +5,7 @@ using ExpenseTracker.Domain.Interface;
 using ExpenseTracker.Domain.Model.Entity;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ExpenseTracker.Application.Services
@@ -14,11 +15,13 @@ namespace ExpenseTracker.Application.Services
         private readonly IMapper _mapper;
         private readonly IBudgetRepository _budgetRepo;
         private readonly IExpenseRepository _expenseRepo;
-        public BudgetService(IMapper mapper, IBudgetRepository budgetRepo, IExpenseRepository expenseRepo)
+        private readonly IMainCategoryRepository _mainCRepo;
+        public BudgetService(IMapper mapper, IBudgetRepository budgetRepo, IExpenseRepository expenseRepo, IMainCategoryRepository mainCRepo)
         {
             _mapper = mapper;
             _budgetRepo = budgetRepo;
             _expenseRepo = expenseRepo;
+            _mainCRepo = mainCRepo;
         }
 
         public void CreateBudgetForNewUser(string userId)
@@ -56,6 +59,35 @@ namespace ExpenseTracker.Application.Services
             decimal currentValue = model.Amount;
             budget.Sum += currentValue - lastValue;
             _budgetRepo.UpdateAmount(budget);
+        }
+
+        public decimal SumAllExpensesOfDetailedCategories(List<DetailedCategory> detCategories)
+        {
+            decimal sum = 0;
+            List<Expense> expensesOfCategory;
+            foreach (var detCategory in detCategories)
+            {
+                expensesOfCategory = _expenseRepo.GetAllExpensesOfDetailedCategory(detCategory.Id).ToList();
+                
+                for (int i = 0; i < expensesOfCategory.Count; i++)
+                {
+                    sum += expensesOfCategory[0].Amount;
+                }
+            }
+            return sum;
+        }
+
+        public void RemoveFromSumBeforeCategoryDelete(Budget budget, decimal sumToRemoveFromBudget)
+        {
+            budget.Sum -= sumToRemoveFromBudget;
+            _budgetRepo.UpdateAmount(budget);
+        }
+
+        public Budget GetBudgetOfMainCategory(int mainCategoryId)
+        {
+            var userId = _mainCRepo.GetMainCategoryById(mainCategoryId).ApplicationUserId;
+            var budget = _budgetRepo.GetBudgetByUserId(userId);
+            return budget;
         }
     }
 }

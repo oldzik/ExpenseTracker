@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using ExpenseTracker.Application.Interfaces;
+using ExpenseTracker.Application.ViewModels.DetailedCategory;
 using ExpenseTracker.Domain.Interface;
 using ExpenseTracker.Domain.Model.Entity;
 using System;
@@ -38,6 +40,27 @@ namespace ExpenseTracker.Application.Services
 
             _detailedCRepo.AddDetailedCategories(detailedCategories);
 
+        }
+
+        public ListDetailedCatForListVm GetDetailedCategoriesForList(int mainCategoryId)
+        {
+            var detailedCategories = _detailedCRepo.GetDetailedCategoriesOfMainCategory(mainCategoryId).ProjectTo<DetailedCatForListVm>
+                (_mapper.ConfigurationProvider).ToList();
+
+            var detailedCatList = new ListDetailedCatForListVm()
+            {
+                DetailedCategories = detailedCategories,
+                Count = detailedCategories.Count
+            };
+
+            return detailedCatList;
+
+        }
+
+        public List<DetailedCategory> GetDetailedCategoriesOfMainCategory(int mainCategoryId)
+        {
+            var categories = _detailedCRepo.GetDetailedCategoriesOfMainCategory(mainCategoryId).ToList();
+            return categories;
         }
     }
 }

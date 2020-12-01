@@ -20,7 +20,6 @@ namespace ExpenseTracker.Application.ViewModels.Expense
         [DisplayName("Data")]
         public DateTime Date { get; set; }
         [DisplayName("Kwota")]
-        [RegularExpression(@"\d{1,20}(\.\d{1,2})?", ErrorMessage = "Nieprawidłowy format, użyj - XXXX.XX.")]
         public decimal Amount { get; set; }
         [DisplayName("Kategoria")]
         public int SelectedCategory { get; set; }
@@ -33,12 +32,5 @@ namespace ExpenseTracker.Application.ViewModels.Expense
                 .ForMember(d => d.DetailedCategoryId, opt => opt.MapFrom(s => s.SelectedCategory));
         }
 
-        public class NewExpenseValidator : AbstractValidator<NewExpenseVm>
-        {
-            public NewExpenseValidator()
-            {
-                RuleFor(x => x.Amount).ScalePrecision(2,18);
-            }
-        }
     }
 }

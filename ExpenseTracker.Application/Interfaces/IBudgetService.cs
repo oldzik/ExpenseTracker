@@ -1,4 +1,5 @@
 ﻿using ExpenseTracker.Application.ViewModels.Expense;
+using ExpenseTracker.Domain.Model.Entity;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,5 +12,8 @@ namespace ExpenseTracker.Application.Interfaces
         public void AddToSum(int expenseId);
         public void RemoveFromSum(int expenseId);
         public void EditSum(EditExpenseVm model);
+        public decimal SumAllExpensesOfDetailedCategories(List<DetailedCategory> detCategories);
+        void RemoveFromSumBeforeCategoryDelete(Budget budget,decimal sumToRemoveFromBudget);
+        Budget GetBudgetOfMainCategory(int mainCategoryId);
     }
 }

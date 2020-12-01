@@ -9,6 +9,9 @@
 <p>
     <a asp-action="CreateExpense">Dodaj nowy wydatek</a>
 </p>
+<p>
+<a asp-controller="Category" asp-action="Index">Główne kategorie</a>
+</p>
 <table class="table">
     <thead>
         <tr>
@@ -53,8 +56,8 @@
                     @Html.DisplayFor(modelItem => item.Category)
                 </td>
                 <td>
-                    @Html.ActionLink("Edytuj", "EditExpense", new { expenseId=item.Id }) |
-                    @Html.ActionLink("Usuń", "DeleteExpense", new { expenseId=item.Id })
+                    @Html.ActionLink("Edytuj", "EditExpense", new { expenseId = item.Id }) |
+                    @Html.ActionLink("Usuń", "DeleteExpense", new { expenseId = item.Id })
                 </td>
             </tr>
         }
