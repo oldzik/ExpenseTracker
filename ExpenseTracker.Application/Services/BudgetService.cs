@@ -61,7 +61,7 @@ namespace ExpenseTracker.Application.Services
             _budgetRepo.UpdateAmount(budget);
         }
 
-        public decimal SumAllExpensesOfDetailedCategories(List<DetailedCategory> detCategories)
+        public decimal SumAllExpensesAmountsOfDetailedCategories(List<DetailedCategory> detCategories)
         {
             decimal sum = 0;
             List<Expense> expensesOfCategory;
@@ -71,7 +71,7 @@ namespace ExpenseTracker.Application.Services
                 
                 for (int i = 0; i < expensesOfCategory.Count; i++)
                 {
-                    sum += expensesOfCategory[0].Amount;
+                    sum += expensesOfCategory[i].Amount;
                 }
             }
             return sum;
@@ -88,6 +88,17 @@ namespace ExpenseTracker.Application.Services
             var userId = _mainCRepo.GetMainCategoryById(mainCategoryId).ApplicationUserId;
             var budget = _budgetRepo.GetBudgetByUserId(userId);
             return budget;
+        }
+
+        public  decimal SumAllExpensesAmountsOfDetailedCategory(DetailedCategory detCategory)
+        {
+            decimal sum = 0;
+            List<Expense> expensesOfCategory = _expenseRepo.GetAllExpensesOfDetailedCategory(detCategory.Id).ToList();
+            for (int i = 0; i < expensesOfCategory.Count; i++)
+            {
+                sum += expensesOfCategory[i].Amount;
+            }
+            return sum;
         }
     }
 }

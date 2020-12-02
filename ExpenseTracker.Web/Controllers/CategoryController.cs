@@ -1,4 +1,5 @@
 ﻿using ExpenseTracker.Application.Interfaces;
+using ExpenseTracker.Application.ViewModels.DetailedCategory;
 using ExpenseTracker.Application.ViewModels.MainCategory;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -85,12 +86,60 @@ namespace ExpenseTracker.Web.Controllers
         public IActionResult DeleteMainCategory(int mainCategoryId)
         {
             var detCategories = _detailedCService.GetDetailedCategoriesOfMainCategory(mainCategoryId);
-            var sumToRemoveFromBudget = _budgetService.SumAllExpensesOfDetailedCategories(detCategories);
+            var sumToRemoveFromBudget = _budgetService.SumAllExpensesAmountsOfDetailedCategories(detCategories);
             var budget = _budgetService.GetBudgetOfMainCategory(mainCategoryId);
             _budgetService.RemoveFromSumBeforeCategoryDelete(budget, sumToRemoveFromBudget);
 
             _mainCService.DeleteMainCategory(mainCategoryId);
             return RedirectToAction("Index");
         }
+
+        //DETAILED CATEGORIES
+        [HttpGet]
+        public IActionResult CreateDetailedCategory(int mainCategoryId)
+        {
+            return View(new NewDetailedCategoryVm() {MainCategoryId=mainCategoryId });
+        }
+
+        [HttpPost]
+        public IActionResult CreateDetailedCategory(NewDetailedCategoryVm model)
+        {
+            var id = _detailedCService.AddDetailedCategory(model);
+            return RedirectToAction("DetailedCategory", new { mainCategoryId = model.MainCategoryId});
+        }
+
+        [HttpGet]
+        public IActionResult EditDetailedCategory(int detailedCategoryId)
+        {
+            var detailedCategory = _detailedCService.GetDetailedCategoryForEdit(detailedCategoryId);
+            return View(detailedCategory);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult EditDetailedCategory(NewDetailedCategoryVm model)
+        {
+            if (ModelState.IsValid)
+            {
+                _detailedCService.UpdateDetailedCategory(model);
+                return RedirectToAction("DetailedCategory", new { mainCategoryId = model.MainCategoryId });
+            }
+            return View(model);
+        }
+
+        public IActionResult DeleteDetailedCategory(int detailedCategoryId)
+        {
+            var detCategory = _detailedCService.GetDetailedCategoryById(detailedCategoryId);
+            int mainCatId = detCategory.MainCategoryId;
+
+            var sumToRemoveFromBudget = _budgetService.SumAllExpensesAmountsOfDetailedCategory(detCategory);
+            var budget = _budgetService.GetBudgetOfMainCategory(mainCatId);
+            _budgetService.RemoveFromSumBeforeCategoryDelete(budget, sumToRemoveFromBudget);
+
+            _detailedCService.DeleteDetailedCategory(detailedCategoryId);
+            return View("DetailedCategory", new { mainCategoryId = mainCatId });
+        }
+
+
     }
 }

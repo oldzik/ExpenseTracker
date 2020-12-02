@@ -23,6 +23,13 @@ namespace ExpenseTracker.Application.Services
             _mainCRepo = mainCRepo;
         }
 
+        public int AddDetailedCategory(NewDetailedCategoryVm model)
+        {
+            var detCategory = _mapper.Map<DetailedCategory>(model);
+            int id = _detailedCRepo.AddDetailedCategory(detCategory);
+            return id;
+        }
+
         public void CreateDetailedCategoriesForNewUser(string userId)
         {
             var mainCategories = _mainCRepo.GetAllMainCategoriesOfUser(userId).ToList();
@@ -40,6 +47,11 @@ namespace ExpenseTracker.Application.Services
 
             _detailedCRepo.AddDetailedCategories(detailedCategories);
 
+        }
+
+        public void DeleteDetailedCategory(int detailedCategoryId)
+        {
+            _detailedCRepo.DeleteDetailedCategory(detailedCategoryId);
         }
 
         public ListDetailedCatForListVm GetDetailedCategoriesForList(int mainCategoryId)
@@ -61,6 +73,26 @@ namespace ExpenseTracker.Application.Services
         {
             var categories = _detailedCRepo.GetDetailedCategoriesOfMainCategory(mainCategoryId).ToList();
             return categories;
+        }
+
+        public DetailedCategory GetDetailedCategoryById(int detailedCategoryId)
+        {
+            var detailedCategory = _detailedCRepo.GetDetailedCategoryById(detailedCategoryId);
+            return detailedCategory;
+        }
+
+        public NewDetailedCategoryVm GetDetailedCategoryForEdit(int detailedCategoryId)
+        {
+            var detailedCategory = _detailedCRepo.GetDetailedCategoryById(detailedCategoryId);
+            var detailedCategoryVm = _mapper.Map<NewDetailedCategoryVm>(detailedCategory);
+            return detailedCategoryVm;
+        }
+
+        public void UpdateDetailedCategory(NewDetailedCategoryVm model)
+        {
+            var detailedCategory = _mapper.Map<DetailedCategory>(model);
+            _detailedCRepo.UpdateDetailedCategory(detailedCategory);
+
         }
     }
 }

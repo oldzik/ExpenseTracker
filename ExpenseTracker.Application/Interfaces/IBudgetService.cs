@@ -12,8 +12,9 @@ namespace ExpenseTracker.Application.Interfaces
         public void AddToSum(int expenseId);
         public void RemoveFromSum(int expenseId);
         public void EditSum(EditExpenseVm model);
-        public decimal SumAllExpensesOfDetailedCategories(List<DetailedCategory> detCategories);
+        public decimal SumAllExpensesAmountsOfDetailedCategories(List<DetailedCategory> detCategories);
         void RemoveFromSumBeforeCategoryDelete(Budget budget,decimal sumToRemoveFromBudget);
         Budget GetBudgetOfMainCategory(int mainCategoryId);
+        decimal SumAllExpensesAmountsOfDetailedCategory(DetailedCategory detCategory);
     }
 }

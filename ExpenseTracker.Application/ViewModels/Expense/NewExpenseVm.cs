@@ -20,6 +20,7 @@ namespace ExpenseTracker.Application.ViewModels.Expense
         [DisplayName("Data")]
         public DateTime Date { get; set; }
         [DisplayName("Kwota")]
+        [DataType(DataType.Currency)]
         public decimal Amount { get; set; }
         [DisplayName("Kategoria")]
         public int SelectedCategory { get; set; }

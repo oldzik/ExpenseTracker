@@ -6,9 +6,6 @@
 
 <h1>DetailedCategory</h1>
 
-<p>
-    <a asp-action="Create">Dodaj nową podkategorię</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -32,9 +29,8 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edytuj", "EditDetailedCategory", new { detailedCategoryId=item.Id  }) |
+                @Html.ActionLink("Usuń", "DeleteDetailedCategory", new { detailedCategoryId = item.Id })
             </td>
         </tr>
 }

@@ -23,6 +23,23 @@ namespace ExpenseTracker.Infrastructure.Repositories
             _context.SaveChanges();
         }
 
+        public int AddDetailedCategory(DetailedCategory detCategory)
+        {
+            _context.DetailedCategories.Add(detCategory);
+            _context.SaveChanges();
+            return detCategory.Id;
+        }
+
+        public void DeleteDetailedCategory(int detailedCategoryId)
+        {
+            var detailedCategory = _context.DetailedCategories.Find(detailedCategoryId);
+            if(detailedCategory != null)
+            {
+                _context.DetailedCategories.Remove(detailedCategory);
+                _context.SaveChanges();
+            }
+        }
+
         public IQueryable<DetailedCategory> GetDetailedCategoriesOfMainCategory(int mainCategoryId)
         {
             var categories = _context.DetailedCategories.Where(c => c.MainCategoryId == mainCategoryId);
@@ -42,6 +59,19 @@ namespace ExpenseTracker.Infrastructure.Repositories
                 }).ToList();
             return new SelectList(categories, "Value", "Text");
                 
+        }
+
+        public DetailedCategory GetDetailedCategoryById(int detailedCategoryId)
+        {
+            var detailedCategory = _context.DetailedCategories.FirstOrDefault(c => c.Id == detailedCategoryId);
+            return detailedCategory;
+        }
+
+        public void UpdateDetailedCategory(DetailedCategory detailedCategory)
+        {
+            _context.Attach(detailedCategory);
+            _context.Entry(detailedCategory).Property("Name").IsModified = true;
+            _context.SaveChanges();
         }
     }
 }
