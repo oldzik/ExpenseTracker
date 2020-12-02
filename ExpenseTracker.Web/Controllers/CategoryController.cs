@@ -137,7 +137,7 @@ namespace ExpenseTracker.Web.Controllers
             _budgetService.RemoveFromSumBeforeCategoryDelete(budget, sumToRemoveFromBudget);
 
             _detailedCService.DeleteDetailedCategory(detailedCategoryId);
-            return View("DetailedCategory", new { mainCategoryId = mainCatId });
+            return RedirectToAction("DetailedCategory", new { mainCategoryId = mainCatId });
         }
 
 
