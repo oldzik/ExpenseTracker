@@ -17,13 +17,15 @@
                 <input type="month" min="2019-01" value="@DateTime.Now.Year-@DateTime.Now.Month" asp-for="MonthOfYear" class="form-control" />
                 <span asp-validation-for="MonthOfYear" class="text-danger"></span>
             </div>
-            @foreach (var item in Model.PlannedExpenses)
+            @for(int i=0;i<Model.PlannedExpenses.Count;i++)
             {
-                <div class="form-group">
-                    <label class="control-label">@item.DetailedCategory.Name</label>
-                    <input asp-for="@item.Amount" class="form-control" />
-                    <span asp-validation-for="@item.Amount" class="text-danger"></span>
-                </div>
+        <div class="form-group">
+            <label class="control-label">@Model.PlannedExpenses[i].DetCategory.Name</label>
+            <input type="hidden" asp-for="@Model.PlannedExpenses[i].DetCategory.Id" />
+            <input type="hidden" asp-for="@Model.PlannedExpenses[i].DetCategory.Name" />
+            <input asp-for="@Model.PlannedExpenses[i].Amount" class="form-control" />
+            <span asp-validation-for="@Model.PlannedExpenses[i].Amount" class="text-danger"></span>
+        </div>
             }
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

@@ -9,5 +9,6 @@ namespace ExpenseTracker.Application.Interfaces
     {
         ListNewPlannedExpensePerMonthVm CreateNewPlannedExpPerMonth(string userId);
         void AddPlannedExpensesPerMonth(ListNewPlannedExpensePerMonthVm model);
+        PlannedExpensesOfAllMainCatVm GetPlannedExpensesOfAllMainCPerMonth(DateTime monthOfYear, string userId);
     }
 }

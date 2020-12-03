@@ -460,3 +460,4 @@ C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\ExpenseTracker.Web.csproj.CoreCompileInputs.cache
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\ExpenseTracker.Web.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\ExpenseTracker.Web.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\Razor\Views\PlannedExpense\Index.cshtml.g.cs

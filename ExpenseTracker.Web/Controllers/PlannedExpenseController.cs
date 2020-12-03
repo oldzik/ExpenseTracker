@@ -20,6 +20,16 @@ namespace ExpenseTracker.Web.Controllers
             _plannedExpService = plannedExpService;
         }
 
+        public IActionResult Index(DateTime monthOfYear)
+        {
+            var claimsIdentity = (ClaimsIdentity)this.User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            var userId = claim.Value;
+
+            var model =  _plannedExpService.GetPlannedExpensesOfAllMainCPerMonth(monthOfYear, userId);
+            return View(model);
+        }
+
         [HttpGet]
         public IActionResult PlanExpensesPerMonth()
         {
@@ -35,7 +45,7 @@ namespace ExpenseTracker.Web.Controllers
         public IActionResult PlanExpensesPerMonth(ListNewPlannedExpensePerMonthVm model)
         {
             _plannedExpService.AddPlannedExpensesPerMonth(model);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Expense");
         }
     }
 }

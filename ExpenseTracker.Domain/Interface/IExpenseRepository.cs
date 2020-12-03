@@ -14,5 +14,6 @@ namespace ExpenseTracker.Domain.Interface
         public Expense GetExpenseById(int expenseId);
         public void UpdateExpense(Expense expense);
         IQueryable<Expense> GetAllExpensesOfDetailedCategory(int detailedCategoryId);
+        IQueryable<Expense> GetAllExpensesOfMainCategory(int mainCatId, DateTime monthOfYear);
     }
 }

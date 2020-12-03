@@ -43,7 +43,7 @@ namespace ExpenseTracker.Infrastructure.Repositories
         public IQueryable<DetailedCategory> GetDetailedCategoriesByUserId(string userId)
         {
             IQueryable<DetailedCategory> categories = _context.DetailedCategories
-                .Where(c => c.MainCategory.ApplicationUserId == userId);
+                .Where(c => c.MainCategory.ApplicationUserId == userId).AsNoTracking<DetailedCategory>();
 
             return categories;
         }

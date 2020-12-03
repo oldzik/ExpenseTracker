@@ -11,12 +11,14 @@ namespace ExpenseTracker.Application.ViewModels.PlannedExpense
     {
         public int Id { get; set; }
         public decimal Amount { get; set; }
-        public NewDetailedCategoryVm DetailedCategory{ get; set; }
+        public DetailedCategoryForNewPlannedExpenseVm DetCategory { get; set; }
 
         public void Mapping(Profile profile)
         {
             profile.CreateMap<NewPlannedExpenseVm, ExpenseTracker.Domain.Model.Entity.PlannedExpense>()
-                .ForMember(d => d.DetailedCategoryId, opt => opt.MapFrom(s => s.DetailedCategory.Id));
+                .ForMember(d => d.DetailedCategoryId, opt => opt.MapFrom(s => s.DetCategory.Id))
+                .ForSourceMember(s => s.DetCategory, opt => opt.DoNotValidate());
+                
         }
 
     }
