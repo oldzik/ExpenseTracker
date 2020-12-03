@@ -16,6 +16,7 @@ namespace ExpenseTracker.Infrastructure
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IMainCategoryRepository, MainCategoryRepository>();
             services.AddTransient<IDetailedCategoryRepository, DetailedCategoryRepository>();
+            services.AddTransient<IPlannedExpenseRepository, PlannedExpenseRepository>();
             return services;
         }
     }

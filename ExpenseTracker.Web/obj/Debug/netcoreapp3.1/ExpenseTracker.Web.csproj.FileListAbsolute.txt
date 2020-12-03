@@ -450,12 +450,13 @@ C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\FluentValidation.AspNetCore.dll
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\FluentValidation.DependencyInjectionExtensions.dll
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\bin\Debug\netcoreapp3.1\libman.json
-C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\ExpenseTracker.Web.csproj.CoreCompileInputs.cache
-C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\ExpenseTracker.Web.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\ExpenseTracker.Web.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\Razor\Views\Category\Index.cshtml.g.cs
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\Razor\Views\Category\DetailedCategory.cshtml.g.cs
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\Razor\Views\Category\CreateMainCategory.cshtml.g.cs
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\Razor\Views\Category\EditMainCategory.cshtml.g.cs
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\Razor\Views\Category\CreateDetailedCategory.cshtml.g.cs
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\Razor\Views\Category\EditDetailedCategory.cshtml.g.cs
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\Razor\Views\PlannedExpense\PlanExpensesPerMonth.cshtml.g.cs
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\ExpenseTracker.Web.csproj.CoreCompileInputs.cache
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\ExpenseTracker.Web.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\ExpenseTracker.Web.MvcApplicationPartsAssemblyInfo.cache

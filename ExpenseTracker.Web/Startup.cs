@@ -65,6 +65,15 @@ namespace ExpenseTracker.Web
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            //tutaj nowe
+            var defaultCulture = new CultureInfo("pl-PL");
+            var localizationOptions = new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture(defaultCulture),
+                SupportedCultures = new List<CultureInfo> { defaultCulture },
+                SupportedUICultures = new List<CultureInfo> { defaultCulture }
+            };
+            app.UseRequestLocalization(localizationOptions);
 
             app.UseRouting();
 

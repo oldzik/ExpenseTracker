@@ -17,5 +17,6 @@ namespace ExpenseTracker.Domain.Interface
         DetailedCategory GetDetailedCategoryById(int detailedCategoryId);
         void UpdateDetailedCategory(DetailedCategory detailedCategory);
         void DeleteDetailedCategory(int detailedCategoryId);
+        IQueryable<DetailedCategory> GetDetailedCategoriesByUserId(string userId);
     }
 }

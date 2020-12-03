@@ -225,14 +225,12 @@ namespace ExpenseTracker.Infrastructure.Migrations
                     b.Property<int>("DetailedCategoryId")
                         .HasColumnType("int");
 
-                    b.Property<int>("MonthOfYearId")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("MonthOfYear")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.HasIndex("DetailedCategoryId");
-
-                    b.HasIndex("MonthOfYearId");
 
                     b.ToTable("PlannedExpenses");
                 });
@@ -425,12 +423,6 @@ namespace ExpenseTracker.Infrastructure.Migrations
                     b.HasOne("ExpenseTracker.Domain.Model.Entity.DetailedCategory", "DetailedCategory")
                         .WithMany("PlannedExpenses")
                         .HasForeignKey("DetailedCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ExpenseTracker.Domain.Model.Entity.MonthOfYear", "MonthOfYear")
-                        .WithMany("PlannedExpenses")
-                        .HasForeignKey("MonthOfYearId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

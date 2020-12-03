@@ -10,7 +10,6 @@ namespace ExpenseTracker.Domain.Model.Entity
         public int Year { get; set; }
         public int MonthId { get; set; }
 
-        public ICollection<PlannedExpense> PlannedExpenses { get; set; }
         public Month Month { get; set; }
 
     }

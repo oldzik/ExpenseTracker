@@ -40,6 +40,14 @@ namespace ExpenseTracker.Infrastructure.Repositories
             }
         }
 
+        public IQueryable<DetailedCategory> GetDetailedCategoriesByUserId(string userId)
+        {
+            IQueryable<DetailedCategory> categories = _context.DetailedCategories
+                .Where(c => c.MainCategory.ApplicationUserId == userId);
+
+            return categories;
+        }
+
         public IQueryable<DetailedCategory> GetDetailedCategoriesOfMainCategory(int mainCategoryId)
         {
             var categories = _context.DetailedCategories.Where(c => c.MainCategoryId == mainCategoryId);

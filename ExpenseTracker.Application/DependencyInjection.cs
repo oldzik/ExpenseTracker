@@ -18,6 +18,7 @@ namespace ExpenseTracker.Application
             services.AddTransient<IUserService,UserService>();
             services.AddTransient<IMainCService,MainCService>();
             services.AddTransient<IDetailedCService,DetailedCService>();
+            services.AddTransient<IPlannedExpenseService, PlannedExpenseService>();
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             return services;
         }

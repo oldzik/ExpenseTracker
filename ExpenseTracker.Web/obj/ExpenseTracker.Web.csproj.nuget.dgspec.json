@@ -335,6 +335,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.1.4, )"
+            },
+            "Npm": {
+              "target": "Package",
+              "version": "[3.5.2, )"
             }
           },
           "imports": [
