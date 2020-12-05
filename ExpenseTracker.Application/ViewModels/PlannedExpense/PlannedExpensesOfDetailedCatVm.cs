@@ -6,9 +6,10 @@ using System.Text;
 
 namespace ExpenseTracker.Application.ViewModels.PlannedExpense
 {
-    public class PlannedExpensesOfMainCatVm : IMapFrom<ExpenseTracker.Domain.Model.Entity.MainCategory>
+    public class PlannedExpensesOfDetailedCatVm : IMapFrom<ExpenseTracker.Domain.Model.Entity.DetailedCategory>
     {
-        public int Id { get; set; } //main category id
+        public int Id { get; set; } //detailed category id
+        public int PlannedExpenseId { get; set; }
         public string Name { get; set; }
         [IgnoreMap]
         public decimal PlannedAmount { get; set; }
@@ -17,7 +18,7 @@ namespace ExpenseTracker.Application.ViewModels.PlannedExpense
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<ExpenseTracker.Domain.Model.Entity.MainCategory, PlannedExpensesOfMainCatVm>();
+            profile.CreateMap<ExpenseTracker.Domain.Model.Entity.DetailedCategory, PlannedExpensesOfDetailedCatVm>();
         }
     }
 }

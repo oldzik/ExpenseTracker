@@ -10,5 +10,8 @@ namespace ExpenseTracker.Domain.Interface
     {
         void AddPlannedExpenses(List<PlannedExpense> newPlannedExpenses);
         IQueryable<PlannedExpense> GetAllPlannedExpensesOfMainCat(int mainCatId, DateTime monthOfYear);
+        PlannedExpense GetPlannedExpenseOfDetailedCat(int detailedCatid, DateTime monthOfYear);
+        PlannedExpense GetPlannedExpenseById(int plannedExpenseId);
+        void UpdatePlannedExpense(PlannedExpense plannedExpense);
     }
 }

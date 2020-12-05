@@ -50,6 +50,7 @@ namespace ExpenseTracker.Infrastructure.Repositories
             return mainCategory;
         }
 
+
         public void UpdateMainCategory(MainCategory mainCategory)
         {
             _context.Attach(mainCategory);

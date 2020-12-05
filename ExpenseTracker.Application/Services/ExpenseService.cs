@@ -70,6 +70,27 @@ namespace ExpenseTracker.Application.Services
             return expenseList;
         }
 
+        public ListPerMonthDetCatExpenseForListVm GetAllExpensesForListDetCatPerMonth(DateTime monthOfYear, int detailedCategoryId)
+        {
+            if (monthOfYear.Day != 1)
+                monthOfYear = DateTime.ParseExact(monthOfYear.ToString(), "MM.dd.yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+
+            int mainCatId = _detailedCRepo.GetDetailedCategoryById(detailedCategoryId).MainCategoryId;
+            
+            var expenses = _expenseRepo.GetAllExpensesOfDetailedCategoryPerMonth(detailedCategoryId, monthOfYear)
+                .ProjectTo<ExpenseForListVm>(_mapper.ConfigurationProvider).ToList();
+
+            var expenseList = new ListPerMonthDetCatExpenseForListVm()
+            {
+                Expenses = expenses,
+                MainCategoryId = mainCatId,
+                MonthOfYear = monthOfYear,
+                Count = expenses.Count
+            };
+            return expenseList;
+
+        }
+
         public EditExpenseVm GetExpenseForEdit(int expenseId)
         {
             var expense = _expenseRepo.GetExpenseById(expenseId);

@@ -1,0 +1,50 @@
+﻿@model ExpenseTracker.Application.ViewModels.PlannedExpense.PlannedExpensesOfAllDetailedCatVm
+
+@{
+    ViewData["Title"] = "GetPlannedExpenesesOfMainCategory";
+}
+
+<h1>GetPlannedExpenesesOfMainCategory</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Kategoria
+            </th>
+            <th>
+                Zaplanowane wydatki
+            </th>
+            <th>
+                Aktualnie wydano
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.PlannedExpOfDetailedCat)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlannedAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SpentAmount)
+                </td>
+                <td>
+                    @Html.ActionLink("Edytuj kwotę zaplanowanych wydatków", "EditPlannedExpsOfDetailedCatPerMonth", new { plannedExpenseId = item.PlannedExpenseId })|
+                    @Html.ActionLink("Pokaż wydatki","GetExpensesOfDetailedCatPerMonth","Expense", new { monthOfYear = Model.MonthOfYear, detailedCategoryId = item.Id})
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p>
+    <a asp-action="Index" asp-route-monthOfYear="@Model.MonthOfYear">Wróć do głównych kategorii</a>
+</p>

@@ -21,11 +21,32 @@ namespace ExpenseTracker.Infrastructure.Repositories
             _context.SaveChanges();
         }
 
+        public PlannedExpense GetPlannedExpenseOfDetailedCat(int detailedCatId, DateTime monthOfYear)
+        {
+            var plannedExp = (from exp in _context.PlannedExpenses
+                              where exp.DetailedCategoryId == detailedCatId && exp.MonthOfYear == monthOfYear
+                              select exp).First();
+            return plannedExp;
+        }
+
         public IQueryable<PlannedExpense> GetAllPlannedExpensesOfMainCat(int mainCatId, DateTime monthOfYear)
         {
             var plannedExps = _context.PlannedExpenses
                 .Where(e => e.DetailedCategory.MainCategoryId == mainCatId && e.MonthOfYear == monthOfYear);
             return plannedExps;
+        }
+
+        public PlannedExpense GetPlannedExpenseById(int plannedExpenseId)
+        {
+            var plannedExpense = _context.PlannedExpenses.Find(plannedExpenseId);
+            return plannedExpense;
+        }
+
+        public void UpdatePlannedExpense(PlannedExpense plannedExpense)
+        {
+            _context.Attach(plannedExpense);
+            _context.Entry(plannedExpense).Property("Amount").IsModified = true;
+            _context.SaveChanges();
         }
     }
 }

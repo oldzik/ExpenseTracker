@@ -6,6 +6,7 @@ using ExpenseTracker.Domain.Interface;
 using ExpenseTracker.Domain.Model.Entity;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -39,10 +40,12 @@ namespace ExpenseTracker.Application.Services
             _plannedExpenseRepo.AddPlannedExpenses(newPlannedExpenses);
         }
 
-        public ListNewPlannedExpensePerMonthVm CreateNewPlannedExpPerMonth(string userId)
+        public ListNewPlannedExpensePerMonthVm CreateNewPlannedExpPerMonth(DateTime monthOfYear, string userId)
         {
+            if (monthOfYear.Day != 1)
+                monthOfYear = DateTime.ParseExact(monthOfYear.ToString(), "MM.dd.yyyy HH:mm:ss", CultureInfo.InvariantCulture);
             List<NewPlannedExpenseVm> newPlannedExpenses = new List<NewPlannedExpenseVm>();
-            
+
             var detCategories = _detailedCRepo.GetDetailedCategoriesByUserId(userId).ToList();
             for (int i = 0; i < detCategories.Count; i++)
             {
@@ -56,7 +59,8 @@ namespace ExpenseTracker.Application.Services
             }
             var newPlannedExpensesPerMonthVm = new ListNewPlannedExpensePerMonthVm()
             {
-                PlannedExpenses = newPlannedExpenses
+                PlannedExpenses = newPlannedExpenses,
+                MonthOfYear = monthOfYear
             };
 
             return newPlannedExpensesPerMonthVm;
@@ -64,36 +68,99 @@ namespace ExpenseTracker.Application.Services
 
         public PlannedExpensesOfAllMainCatVm GetPlannedExpensesOfAllMainCPerMonth(DateTime monthOfYear, string userId)
         {
+            if(monthOfYear.Day != 1)
+                monthOfYear = DateTime.ParseExact(monthOfYear.ToString(), "MM.dd.yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+
             PlannedExpensesOfAllMainCatVm model = new PlannedExpensesOfAllMainCatVm();
             model.PlannedExpOfMainCat = new List<PlannedExpensesOfMainCatVm>();
             var mainCategories = _mainCRepo.GetAllMainCategoriesOfUser(userId).ToList();
-            
-            foreach(var mainCat in mainCategories)
+            if (mainCategories != null)
             {
-                var plannedExpMainCatVm = _mapper.Map<PlannedExpensesOfMainCatVm>(mainCat);
-
-                List<PlannedExpense> plannedExps = _plannedExpenseRepo.GetAllPlannedExpensesOfMainCat(mainCat.Id, monthOfYear).ToList();
-                List<Expense> exps = _expenseRepo.GetAllExpensesOfMainCategory(mainCat.Id, monthOfYear).ToList();
-                //oblicz sume planned
-                //oblicz sume spent
-                decimal plannedAm = 0;
-                foreach(var plannedExp in plannedExps)
+                foreach (var mainCat in mainCategories)
                 {
-                    plannedAm += plannedExp.Amount;
-                }
-                decimal spentAm = 0;
-                foreach (var exp in exps)
-                {
-                    spentAm += exp.Amount;
-                }
+                    var plannedExpMainCatVm = _mapper.Map<PlannedExpensesOfMainCatVm>(mainCat);
 
-                plannedExpMainCatVm.PlannedAmount = plannedAm;
-                plannedExpMainCatVm.SpentAmount = spentAm;
-                model.PlannedExpOfMainCat.Add(plannedExpMainCatVm);
+                    List<PlannedExpense> plannedExps = _plannedExpenseRepo.GetAllPlannedExpensesOfMainCat(mainCat.Id, monthOfYear).ToList();
+                    if (plannedExps.Count == 0)
+                        break;
+                        
+                    List<Expense> exps = _expenseRepo.GetAllExpensesOfMainCategory(mainCat.Id, monthOfYear).ToList();
+                    //oblicz sume planned
+                    //oblicz sume spent
+                    decimal plannedAm = 0;
+                    foreach (var plannedExp in plannedExps)
+                    {
+                        plannedAm += plannedExp.Amount;
+                    }
+                    decimal spentAm = 0;
+                    foreach (var exp in exps)
+                    {
+                        spentAm += exp.Amount;
+                    }
+
+                    plannedExpMainCatVm.PlannedAmount = plannedAm;
+                    plannedExpMainCatVm.SpentAmount = spentAm;
+                    model.PlannedExpOfMainCat.Add(plannedExpMainCatVm);
+                    
+                }
             }
             model.MonthOfYear = monthOfYear;
-            model.Count = model.PlannedExpOfMainCat.Count;  //nie wiem czy tak można?
+            model.Count = model.PlannedExpOfMainCat.Count; 
             return model;
+        }
+
+        public PlannedExpensesOfAllDetailedCatVm GetPlannedExpensesOfMainCPerMonth(DateTime monthOfYear, int mainCategoryId)
+        {
+            if (monthOfYear.Day != 1)
+                monthOfYear = DateTime.ParseExact(monthOfYear.ToString(), "MM.dd.yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+
+            PlannedExpensesOfAllDetailedCatVm model = new PlannedExpensesOfAllDetailedCatVm();
+            model.PlannedExpOfDetailedCat = new List<PlannedExpensesOfDetailedCatVm>();
+
+            var detailedCategories = _detailedCRepo.GetDetailedCategoriesOfMainCategory(mainCategoryId).ToList();
+            if(detailedCategories != null)
+            {
+                foreach(var detailedCat in detailedCategories)
+                {
+                    var plannedExpDetailedCatVm = _mapper.Map<PlannedExpensesOfDetailedCatVm>(detailedCat);
+
+                    PlannedExpense plannedExp = _plannedExpenseRepo.GetPlannedExpenseOfDetailedCat(detailedCat.Id, monthOfYear);
+                    if (plannedExp == null)
+                        break;
+
+                    List<Expense> exps = _expenseRepo.GetAllExpensesOfDetailedCategoryPerMonth(detailedCat.Id, monthOfYear).ToList();
+                    // sum spent
+                    decimal spentAm = 0;
+                    foreach (var exp in exps)
+                    {
+                        spentAm += exp.Amount;
+                    }
+
+                    plannedExpDetailedCatVm.PlannedAmount = plannedExp.Amount;
+                    plannedExpDetailedCatVm.SpentAmount = spentAm;
+                    plannedExpDetailedCatVm.PlannedExpenseId = plannedExp.Id;
+                    model.PlannedExpOfDetailedCat.Add(plannedExpDetailedCatVm);
+                }
+            }
+            model.MonthOfYear = monthOfYear;
+            model.Count = model.PlannedExpOfDetailedCat.Count;
+            return model;
+        }
+
+        public PlannedExpenseForEditVm GetPlannedExpForEdit(int plannedExpenseId)
+        {
+            var plannedExpense = _plannedExpenseRepo.GetPlannedExpenseById(plannedExpenseId);
+            var plannedExpenseVm = _mapper.Map<PlannedExpenseForEditVm>(plannedExpense);
+            var detCat = _detailedCRepo.GetDetailedCategoryById(plannedExpense.DetailedCategoryId);
+            plannedExpenseVm.MainCategoryId = detCat.MainCategoryId;
+            return plannedExpenseVm;
+
+        }
+
+        public void UpdatePlannedExpense(PlannedExpenseForEditVm model)
+        {
+            var plannedExpense = _mapper.Map<PlannedExpense>(model);
+            _plannedExpenseRepo.UpdatePlannedExpense(plannedExpense);
         }
     }
 }

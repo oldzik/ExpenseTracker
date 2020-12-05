@@ -88,5 +88,11 @@ namespace ExpenseTracker.Web.Controllers
             return View(model);
         }
 
+        public IActionResult GetExpensesOfDetailedCatPerMonth(DateTime monthOfYear, int detailedCategoryId)
+        {
+            var model = _expenseService.GetAllExpensesForListDetCatPerMonth(monthOfYear, detailedCategoryId);
+            return View(model);
+        }
+
     }
 }

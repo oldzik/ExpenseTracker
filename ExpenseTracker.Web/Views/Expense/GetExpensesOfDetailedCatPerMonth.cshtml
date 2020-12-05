@@ -1,0 +1,59 @@
+﻿@model ExpenseTracker.Application.ViewModels.Expense.ListPerMonthDetCatExpenseForListVm
+
+@{
+    ViewData["Title"] = "GetExpensesOfDetailedCatPerMonth";
+}
+
+<h1>GetExpensesOfDetailedCatPerMonth</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Lp.
+            </th>
+            <th>
+                Nazwa
+            </th>
+            <th>
+                Kwota
+            </th>
+            <th>
+                Data
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{int num = 0;
+            string date = "";}
+        @foreach (var item in Model.Expenses)
+        {
+            <tr>
+                <td>
+                    @{ num++;}
+                    @num.
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @{date = item.Date.ToString("d");}
+                    @date
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@{
+    var parms = new Dictionary<string, string>
+    {
+        { "monthOfYear", Model.MonthOfYear.ToString() },
+        { "mainCategoryId", Model.MainCategoryId.ToString()}
+    };
+}
+<p>
+    <a asp-action="GetPlannedExpensesOfMainCategory" asp-controller="PlannedExpense" asp-all-route-data="@parms" }>Wróć do listy podkategorii</a>
+</p>

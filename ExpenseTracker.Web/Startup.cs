@@ -71,7 +71,7 @@ namespace ExpenseTracker.Web
             {
                 DefaultRequestCulture = new RequestCulture(defaultCulture),
                 SupportedCultures = new List<CultureInfo> { defaultCulture },
-                SupportedUICultures = new List<CultureInfo> { defaultCulture }
+                SupportedUICultures = new List<CultureInfo> { defaultCulture }                
             };
             app.UseRequestLocalization(localizationOptions);
 

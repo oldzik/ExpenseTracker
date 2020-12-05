@@ -45,6 +45,14 @@ namespace ExpenseTracker.Infrastructure.Repositories
             return expenses;
         }
 
+        public IQueryable<Expense> GetAllExpensesOfDetailedCategoryPerMonth(int detailedCatId, DateTime monthOfYear)
+        {
+            var expenses = _context.Expenses
+                .Where(e => e.DetailedCategoryId == detailedCatId
+                && e.Date >= monthOfYear && e.Date <= monthOfYear.AddMonths(1));
+            return expenses;
+        }
+
         public IQueryable<Expense> GetAllExpensesOfMainCategory(int mainCatId, DateTime monthOfYear)
         {
             var expenses = _context.Expenses
