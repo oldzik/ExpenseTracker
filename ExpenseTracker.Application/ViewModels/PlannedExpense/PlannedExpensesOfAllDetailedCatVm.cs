@@ -8,6 +8,8 @@ namespace ExpenseTracker.Application.ViewModels.PlannedExpense
     {
         public List<PlannedExpensesOfDetailedCatVm> PlannedExpOfDetailedCat { get; set; }
         public DateTime MonthOfYear { get; set; }
+        public int MainCategoryId { get; set; }
+        public string MainCategoryName { get; set; }
         public int Count { get; set; }
     }
 }

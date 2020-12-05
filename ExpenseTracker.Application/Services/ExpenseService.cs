@@ -54,16 +54,22 @@ namespace ExpenseTracker.Application.Services
             _expenseRepo.DeleteExpense(expenseId);
         }
 
-        public ListExpenseForListVm GetAllExpensesForList(string userId)
+        public ListExpenseForListVm GetAllExpensesForList(DateTime monthOfYear, string userId)
         {
+            if (monthOfYear.Day != 1)
+                monthOfYear = DateTime.ParseExact(monthOfYear.ToString(), "MM.dd.yyyy HH:mm:ss", CultureInfo.InvariantCulture);
 
             var budget = _budgetRepo.GetBudgetByUserId(userId);
            
-            var expenses = _expenseRepo.GetAllExpensesOfBudget(budget.Id).ProjectTo<ExpenseForListVm>
-                 (_mapper.ConfigurationProvider).ToList();
+            var expenses = _expenseRepo.GetAllExpensesOfBudget(budget.Id)
+                .Where(e => e.Date >= monthOfYear && e.Date <=monthOfYear.AddMonths(1))
+                .ProjectTo<ExpenseForListVm>(_mapper.ConfigurationProvider).ToList();
+
 
             var expenseList = new ListExpenseForListVm()
             {
+                MonthOfYear = monthOfYear,
+                UserId = userId,
                 Expenses = expenses,
                 Count = expenses.Count
             };
@@ -76,13 +82,14 @@ namespace ExpenseTracker.Application.Services
                 monthOfYear = DateTime.ParseExact(monthOfYear.ToString(), "MM.dd.yyyy HH:mm:ss", CultureInfo.InvariantCulture);
 
             int mainCatId = _detailedCRepo.GetDetailedCategoryById(detailedCategoryId).MainCategoryId;
-            
+            var detCategory = _detailedCRepo.GetDetailedCategoryById(detailedCategoryId);
             var expenses = _expenseRepo.GetAllExpensesOfDetailedCategoryPerMonth(detailedCategoryId, monthOfYear)
                 .ProjectTo<ExpenseForListVm>(_mapper.ConfigurationProvider).ToList();
 
             var expenseList = new ListPerMonthDetCatExpenseForListVm()
             {
                 Expenses = expenses,
+                DetailedCategoryName = detCategory.Name,
                 MainCategoryId = mainCatId,
                 MonthOfYear = monthOfYear,
                 Count = expenses.Count

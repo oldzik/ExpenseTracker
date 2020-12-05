@@ -4,10 +4,19 @@
     ViewData["Title"] = "EditPlannedExpsOfDetailedCatPerMonth";
 }
 
-<h1>EditPlannedExpsOfDetailedCatPerMonth</h1>
-
-<h4>PlannedExpenseForEditVm</h4>
+<h1 style="margin-top:35px; margin-bottom:8px;">@Model.DetailedCategoryName</h1>
+<h4 style="font-size:17px; margin-bottom:30px;">Edytuj zaplanowaną kwotę</h4>
+<h3>
+    @Model.MonthOfYear.ToString("MMMM yyyy").ToUpper()
+</h3>
 <hr />
+@{
+    var parms = new Dictionary<string, string>
+{
+        { "monthOfYear", Model.MonthOfYear.ToString() },
+        { "mainCategoryId", Model.MainCategoryId.ToString()}
+    };
+}
 <div class="row">
     <div class="col-md-4">
         <form asp-action="EditPlannedExpsOfDetailedCatPerMonth">
@@ -16,8 +25,13 @@
                 <input type="hidden" asp-for="Id" />
             </div>
             <div class="form-group">
-                <label asp-for="Amount" class="control-label"></label>
-                <input asp-for="Amount" class="form-control" />
+                <label asp-for="Amount" class="control-label">Kwota</label>
+                <div class="input-group mb-3">
+                    <input asp-for="Amount" class="form-control" />
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">zł</span>
+                    </div>
+                </div>
                 <span asp-validation-for="Amount" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -26,21 +40,14 @@
             <div class="form-group">
                 <input type="hidden" asp-for="MonthOfYear" />
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <div class="form-group" style="float:left; margin-right:8px;">
+                <input type="submit" value="Zapisz" class="btn btn-primary" />
+            </div>
+            <div>
+                <a class="btn btn-outline-secondary" asp-action="GetPlannedExpensesOfMainCategory" asp-all-route-data="@parms">Cofnij</a>
             </div>
         </form>
     </div>
-</div>
-@{
-    var parms = new Dictionary<string, string>
-{
-        { "monthOfYear", Model.MonthOfYear.ToString() },
-        { "mainCategoryId", Model.MainCategoryId.ToString()}
-    };
-}
-<div>
-    <a asp-action="GetPlannedExpensesOfMainCategory" asp-all-route-data="@parms" >Back to List</a>
 </div>
 
 @section Scripts {

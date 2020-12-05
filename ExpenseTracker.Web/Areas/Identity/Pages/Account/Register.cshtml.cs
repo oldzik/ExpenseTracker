@@ -95,6 +95,7 @@ namespace ExpenseTracker.Web.Areas.Identity.Pages.Account
                     _budgetService.CreateBudgetForNewUser(user.Id);
                     _mainCService.CreateMainCategoriesForNewUser(user.Id);
                     _detailedCService.CreateDetailedCategoriesForNewUser(user.Id);
+                     await _userManager.AddToRoleAsync(user, "User");
 
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

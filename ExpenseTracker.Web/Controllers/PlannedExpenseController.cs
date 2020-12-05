@@ -1,5 +1,6 @@
 ﻿using ExpenseTracker.Application.Interfaces;
 using ExpenseTracker.Application.ViewModels.PlannedExpense;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace ExpenseTracker.Web.Controllers
 {
+    [Authorize(Roles = "User")]
     public class PlannedExpenseController : Controller
     {
         private readonly ILogger<PlannedExpenseController> _logger;

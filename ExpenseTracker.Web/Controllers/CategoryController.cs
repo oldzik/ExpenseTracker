@@ -1,6 +1,7 @@
 ﻿using ExpenseTracker.Application.Interfaces;
 using ExpenseTracker.Application.ViewModels.DetailedCategory;
 using ExpenseTracker.Application.ViewModels.MainCategory;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace ExpenseTracker.Web.Controllers
 {
+    [Authorize(Roles = "User")]
     public class CategoryController : Controller
     {
         private readonly ILogger<ExpenseController> _logger;

@@ -12,6 +12,7 @@ namespace ExpenseTracker.Application.ViewModels.PlannedExpense
         public int Id { get; set; }
         public decimal Amount { get; set; }
         public int MainCategoryId { get; set; }
+        public string DetailedCategoryName { get; set; }
         public DateTime MonthOfYear { get; set; }
 
 

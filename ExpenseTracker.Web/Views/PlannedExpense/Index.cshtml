@@ -4,11 +4,11 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1 style="margin-top:50px; margin-bottom:50px;">Zestawienie budżetu i wydatków</h1>
 
-<p>
-    @Model.MonthOfYear.Day.@Model.MonthOfYear.Month.@Model.MonthOfYear.Year r.
-</p>
+<h3>
+    @Model.MonthOfYear.ToString("MMMM yyyy").ToUpper()
+</h3>
 @if (Model.Count > 0)
 {
     <table class="table">
@@ -49,14 +49,13 @@
 else
 {
     <p>
-        <a asp-action="PlanExpensesPerMonth" asp-route-monthOfYear="@Model.MonthOfYear">Zaplanuj wydatki</a>
+        <a class="btn btn-dark" style="background-color: #565ee4; margin-top:10px; margin-bottom:10px;" asp-action="PlanExpensesPerMonth" asp-route-monthOfYear="@Model.MonthOfYear">Zaplanuj wydatki</a>
     </p>
     <p>Brak zaplanowanych wydatków na ten miesiąc...</p>
 }
 
-<p>
-    <a asp-action="Index" asp-route-monthOfYear="@Model.MonthOfYear.AddMonths(-1)">Poprzedni miesiąc</a>
-</p>
-<p>
-    <a asp-action="Index" asp-route-monthOfYear="@Model.MonthOfYear.AddMonths(1)">Następny miesiąc</a>
-</p>
+<div class="row">
+    <a class="btn btn-success" style="margin-right:13px" asp-action="Index" asp-route-monthOfYear="@Model.MonthOfYear.AddMonths(-1)">Poprzedni miesiąc</a>
+    <a class="btn btn-success" asp-action="Index" asp-route-monthOfYear="@Model.MonthOfYear.AddMonths(1)">Następny miesiąc</a>
+</div>
+

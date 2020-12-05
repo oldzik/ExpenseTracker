@@ -4,47 +4,70 @@
     ViewData["Title"] = "GetPlannedExpenesesOfMainCategory";
 }
 
-<h1>GetPlannedExpenesesOfMainCategory</h1>
+<h1 style="margin-top:50px; margin-bottom:50px;">@Model.MainCategoryName</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Kategoria
-            </th>
-            <th>
-                Zaplanowane wydatki
-            </th>
-            <th>
-                Aktualnie wydano
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.PlannedExpOfDetailedCat)
-        {
+<h3>
+    @Model.MonthOfYear.ToString("MMMM yyyy").ToUpper()
+</h3>
+@if (Model.Count > 0)
+{
+    <table class="table">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PlannedAmount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SpentAmount)
-                </td>
-                <td>
-                    @Html.ActionLink("Edytuj kwotę zaplanowanych wydatków", "EditPlannedExpsOfDetailedCatPerMonth", new { plannedExpenseId = item.PlannedExpenseId })|
-                    @Html.ActionLink("Pokaż wydatki","GetExpensesOfDetailedCatPerMonth","Expense", new { monthOfYear = Model.MonthOfYear, detailedCategoryId = item.Id})
-
-                </td>
+                <th>
+                    Kategoria
+                </th>
+                <th>
+                    Zaplanowane wydatki
+                </th>
+                <th>
+                    Aktualnie wydano
+                </th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.PlannedExpOfDetailedCat)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PlannedAmount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SpentAmount)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edytuj kwotę zaplanowanych wydatków", "EditPlannedExpsOfDetailedCatPerMonth", new { plannedExpenseId = item.PlannedExpenseId })|
+                        @Html.ActionLink("Pokaż wydatki", "GetExpensesOfDetailedCatPerMonth", "Expense", new { monthOfYear = Model.MonthOfYear, detailedCategoryId = item.Id })
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Brak zaplanowanych wydatków na ten miesiąc...</p>
+}
+@{
+    var parmsToPrevious = new Dictionary<string, string>
+{
+        { "monthOfYear", Model.MonthOfYear.AddMonths(-1).ToString() },
+        { "mainCategoryId", Model.MainCategoryId.ToString()}
+    };
+    var parmsToNext = new Dictionary<string, string>
+{
+        { "monthOfYear", Model.MonthOfYear.AddMonths(1).ToString() },
+        { "mainCategoryId", Model.MainCategoryId.ToString()}
+    };
+}
+<div class="row">
+    <a class="btn btn-success" style="margin-right:13px" asp-action="GetPlannedExpensesOfMainCategory" asp-all-route-data="@parmsToPrevious">Poprzedni miesiąc</a>
+    <a class="btn btn-success" asp-action="GetPlannedExpensesOfMainCategory" asp-all-route-data="@parmsToNext">Następny miesiąc</a>
+</div>
 <p>
-    <a asp-action="Index" asp-route-monthOfYear="@Model.MonthOfYear">Wróć do głównych kategorii</a>
+    <a class="btn btn-outline-secondary" style="margin-top:15px" asp-action="Index" asp-route-monthOfYear="@Model.MonthOfYear">Wróć do listy głównych kategorii</a>
 </p>

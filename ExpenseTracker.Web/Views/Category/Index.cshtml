@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1 style="margin-top:33px;">Główne kategorie</h1>
 
 <p>
-    <a asp-action="CreateMainCategory">Dodaj główną kategorię</a>
+    <a asp-action="CreateMainCategory" class="btn btn-dark" style="background-color: #565ee4; margin-top:10px; margin-bottom:10px;" >Dodaj główną kategorię</a>
 </p>
 <table class="table">
     <thead>
@@ -41,6 +41,3 @@
 }
     </tbody>
 </table>
-<p>
-    <a asp-controller="Expense" asp-action="Index">Wróc do listy wydatków</a>
-</p>

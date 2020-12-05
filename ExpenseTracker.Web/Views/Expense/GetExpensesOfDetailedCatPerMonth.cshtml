@@ -4,7 +4,11 @@
     ViewData["Title"] = "GetExpensesOfDetailedCatPerMonth";
 }
 
-<h1>GetExpensesOfDetailedCatPerMonth</h1>
+<h1 style="margin-top:50px; margin-bottom:50px;">@Model.DetailedCategoryName</h1>
+
+<h3>
+    @Model.MonthOfYear.ToString("MMMM yyyy").ToUpper()
+</h3>
 
 <table class="table">
     <thead>
@@ -49,11 +53,11 @@
 </table>
 @{
     var parms = new Dictionary<string, string>
-    {
+{
         { "monthOfYear", Model.MonthOfYear.ToString() },
         { "mainCategoryId", Model.MainCategoryId.ToString()}
     };
 }
 <p>
-    <a asp-action="GetPlannedExpensesOfMainCategory" asp-controller="PlannedExpense" asp-all-route-data="@parms" }>Wróć do listy podkategorii</a>
+    <a class=" btn btn-outline-secondary" asp-action="GetPlannedExpensesOfMainCategory" asp-controller="PlannedExpense" asp-all-route-data="@parms" }>Wróć do głównej kategorii</a>
 </p>

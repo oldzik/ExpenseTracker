@@ -62,6 +62,7 @@ namespace ExpenseTracker.Application.Services
             var detailedCatList = new ListDetailedCatForListVm()
             {
                 DetailedCategories = detailedCategories,
+                MainCategoryId = mainCategoryId,
                 Count = detailedCategories.Count
             };
 

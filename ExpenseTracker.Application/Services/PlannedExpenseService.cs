@@ -117,6 +117,7 @@ namespace ExpenseTracker.Application.Services
             PlannedExpensesOfAllDetailedCatVm model = new PlannedExpensesOfAllDetailedCatVm();
             model.PlannedExpOfDetailedCat = new List<PlannedExpensesOfDetailedCatVm>();
 
+            var mainCategory = _mainCRepo.GetMainCategoryById(mainCategoryId);
             var detailedCategories = _detailedCRepo.GetDetailedCategoriesOfMainCategory(mainCategoryId).ToList();
             if(detailedCategories != null)
             {
@@ -142,6 +143,8 @@ namespace ExpenseTracker.Application.Services
                     model.PlannedExpOfDetailedCat.Add(plannedExpDetailedCatVm);
                 }
             }
+            model.MainCategoryId = mainCategoryId;
+            model.MainCategoryName = mainCategory.Name;
             model.MonthOfYear = monthOfYear;
             model.Count = model.PlannedExpOfDetailedCat.Count;
             return model;
@@ -152,6 +155,7 @@ namespace ExpenseTracker.Application.Services
             var plannedExpense = _plannedExpenseRepo.GetPlannedExpenseById(plannedExpenseId);
             var plannedExpenseVm = _mapper.Map<PlannedExpenseForEditVm>(plannedExpense);
             var detCat = _detailedCRepo.GetDetailedCategoryById(plannedExpense.DetailedCategoryId);
+            plannedExpenseVm.DetailedCategoryName = detCat.Name;
             plannedExpenseVm.MainCategoryId = detCat.MainCategoryId;
             return plannedExpenseVm;
 

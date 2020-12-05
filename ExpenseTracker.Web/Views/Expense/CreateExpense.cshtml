@@ -1,19 +1,15 @@
 ﻿@model ExpenseTracker.Application.ViewModels.Expense.NewExpenseVm
-@System.Globalization.CultureInfo.CurrentUICulture
 @{
     ViewData["Title"] = "CreateExpense";
 }
-<h1>CreateExpense</h1>
-<h4>NewExpenseVm</h4>
+<h1 style="margin-top:33px;">Nowy wydatek</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="CreateExpense">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
+                <input type="hidden" asp-for="Id" />
             </div>
             <div class="form-group">
                 <input type="hidden" asp-for="UserId" value="@Model.UserId" />
@@ -30,7 +26,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="Amount" class="control-label"></label>
-                <input asp-for="Amount" class="form-control" />
+                <div class="input-group mb-3">
+                    <input asp-for="Amount" class="form-control" />
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">zł</span>
+                    </div>
+                </div>
                 <span asp-validation-for="Amount" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -38,15 +39,14 @@
                 @Html.DropDownListFor(x => Model.SelectedCategory, new SelectList(Model.Categories, "Value", "Text"), htmlAttributes: new { @class = "form-control" })
                 <span asp-validation-for="SelectedCategory" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="form-group" style="float:left; margin-right:8px;">
+                <input type="submit" value="Utwórz" class="btn btn-primary" />
+            </div>
+            <div>
+                <a class="btn btn-outline-secondary" asp-action="Index">Cofnij</a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

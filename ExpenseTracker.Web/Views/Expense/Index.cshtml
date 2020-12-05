@@ -4,62 +4,68 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1 style="margin-top:33px;">Twoje wydatki</h1>
 
-<p>
-    <a asp-action="CreateExpense">Dodaj nowy wydatek</a>
-</p>
-<p>
-<a asp-controller="Category" asp-action="Index">Główne kategorie</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Lp.
-            </th>
-            <th>
-                Nazwa
-            </th>
-            <th>
-                Kwota
-            </th>
-            <th>
-                Data
-            </th>
-            <th>
-                Kategoria
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @{int num = 0;
-            string date = "";}
-        @foreach (var item in Model.Expenses)
-        {
-            <tr>
-                <td>
-                    @{ num++;}
-                    @num.
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Amount)
-                </td>
-                <td>
-                    @{date = item.Date.ToString("d");}
-                    @date
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category)
-                </td>
-                <td>
-                    @Html.ActionLink("Edytuj", "EditExpense", new { expenseId = item.Id }) |
-                    @Html.ActionLink("Usuń", "DeleteExpense", new { expenseId = item.Id })
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+
+<a asp-action="CreateExpense" class="btn btn-dark" style="background-color: #565ee4; margin-top:10px;">Dodaj nowy</a>
+
+<form asp-action="Index" asp-controller="Expense" method="post">
+    <div class="row" style="margin-bottom:10px; margin-top:30px;">
+        <input style="margin-right:5px;"type="month" asp-for="MonthOfYear" name="monthOfYear" id="monthOfYear" />
+        <input type="hidden" asp-for="UserId" value="@Model.UserId" />
+        <input class="btn btn-success my-2 my-sm-0" type="submit" value="Wyszukaj" />
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Lp.
+                    </th>
+                    <th>
+                        Nazwa
+                    </th>
+                    <th>
+                        Kwota
+                    </th>
+                    <th>
+                        Data
+                    </th>
+                    <th>
+                        Kategoria
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @{int num = 0;
+                    string date = "";}
+                @foreach (var item in Model.Expenses)
+                {
+                    <tr>
+                        <td>
+                            @{ num++;}
+                            @num.
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Amount)
+                        </td>
+                        <td>
+                            @{date = item.Date.ToString("d");}
+                            @date
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edytuj", "EditExpense", new { expenseId = item.Id }) |
+                            @Html.ActionLink("Usuń", "DeleteExpense", new { expenseId = item.Id })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</form>

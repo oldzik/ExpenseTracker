@@ -17,8 +17,6 @@ namespace ExpenseTracker.Infrastructure
         public DbSet<DetailedCategory> DetailedCategories { get; set; }
         public DbSet<Expense> Expenses { get; set; }
         public DbSet<MainCategory> MainCategories { get; set; }
-        public DbSet<Month> Months { get; set; }
-        public DbSet<MonthOfYear> MonthOfYears { get; set; }
         public DbSet<PlannedExpense> PlannedExpenses { get; set; }
         
 

@@ -25,7 +25,7 @@ namespace ExpenseTracker.Infrastructure.Repositories
         {
             var plannedExp = (from exp in _context.PlannedExpenses
                               where exp.DetailedCategoryId == detailedCatId && exp.MonthOfYear == monthOfYear
-                              select exp).First();
+                              select exp).FirstOrDefault();
             return plannedExp;
         }
 

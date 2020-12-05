@@ -4,8 +4,10 @@
     ViewData["Title"] = "DetailedCategory";
 }
 
-<h1>DetailedCategory</h1>
-
+<h1 style="margin-top:33px;">Szczegółowe kategorie</h1>
+<p>
+    <a asp-action="CreateDetailedCategory" asp-route-mainCategoryId="@Model.MainCategoryId" class="btn btn-dark" style="background-color: #565ee4; margin-top:10px; margin-bottom:10px;" >Dodaj kolejną podkategorię</a>
+</p>
 <table class="table">
     <thead>
         <tr>
@@ -37,8 +39,6 @@
     </tbody>
 </table>
 <p>
-    <a asp-action="Index">Wróć do listy głównych kategorii</a>
+    <a asp-action="Index" class="btn btn-outline-secondary">Wróć do listy głównych kategorii</a>
 </p>
-<p>
-    <a asp-controller="Expense" asp-action="Index">Wróć do listy wydatków</a>
-</p>
+
