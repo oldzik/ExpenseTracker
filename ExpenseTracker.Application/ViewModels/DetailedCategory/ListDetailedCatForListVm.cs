@@ -8,6 +8,7 @@ namespace ExpenseTracker.Application.ViewModels.DetailedCategory
     {
         public List<DetailedCatForListVm> DetailedCategories { get; set; }
         public int MainCategoryId { get; set; }
+        public string MainCategoryName { get; set; }
         public int Count { get; set; }
     }
 }

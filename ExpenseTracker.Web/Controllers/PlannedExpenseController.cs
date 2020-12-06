@@ -72,7 +72,7 @@ namespace ExpenseTracker.Web.Controllers
             if (ModelState.IsValid)
             {
                 _plannedExpService.UpdatePlannedExpense(model);
-                return RedirectToAction("GetPlannedExpensesOfMainCategory", new { monthOfYear=model.MonthOfYear,mainCategoryId=model.MainCategoryId});
+                return RedirectToAction("GetPlannedExpensesOfMainCategory", new { monthOfYear=model.MonthOfYear,mainCategoryId=model.MainCatId});
             }
 
             return View(model);

@@ -58,11 +58,13 @@ namespace ExpenseTracker.Application.Services
         {
             var detailedCategories = _detailedCRepo.GetDetailedCategoriesOfMainCategory(mainCategoryId).ProjectTo<DetailedCatForListVm>
                 (_mapper.ConfigurationProvider).ToList();
+            var mainCategory = _mainCRepo.GetMainCategoryById(mainCategoryId);
 
             var detailedCatList = new ListDetailedCatForListVm()
             {
                 DetailedCategories = detailedCategories,
                 MainCategoryId = mainCategoryId,
+                MainCategoryName = mainCategory.Name,
                 Count = detailedCategories.Count
             };
 
@@ -85,8 +87,19 @@ namespace ExpenseTracker.Application.Services
         public NewDetailedCategoryVm GetDetailedCategoryForEdit(int detailedCategoryId)
         {
             var detailedCategory = _detailedCRepo.GetDetailedCategoryById(detailedCategoryId);
+            var mainCategory = _mainCRepo.GetMainCategoryById(detailedCategory.MainCategoryId);
             var detailedCategoryVm = _mapper.Map<NewDetailedCategoryVm>(detailedCategory);
+            detailedCategoryVm.MainCategoryName = mainCategory.Name;
             return detailedCategoryVm;
+        }
+
+        public NewDetailedCategoryVm GetNewDetailedCategoryToCreate(int mainCategoryId)
+        {
+            var mainCategory = _mainCRepo.GetMainCategoryById(mainCategoryId);
+            var model = new NewDetailedCategoryVm();
+            model.MainCategoryId = mainCategoryId;
+            model.MainCategoryName = mainCategory.Name;
+            return model;
         }
 
         public void UpdateDetailedCategory(NewDetailedCategoryVm model)

@@ -100,7 +100,9 @@ namespace ExpenseTracker.Web.Controllers
         [HttpGet]
         public IActionResult CreateDetailedCategory(int mainCategoryId)
         {
-            return View(new NewDetailedCategoryVm() {MainCategoryId=mainCategoryId });
+            var model = _detailedCService.GetNewDetailedCategoryToCreate(mainCategoryId);
+
+            return View(model);
         }
 
         [HttpPost]

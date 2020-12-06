@@ -11,6 +11,7 @@ namespace ExpenseTracker.Application.ViewModels.DetailedCategory
         public int Id { get; set; }
         public string Name { get; set; }
         public int MainCategoryId { get; set; }
+        public string MainCategoryName { get; set; }
 
         public void Mapping(Profile profile)
         {

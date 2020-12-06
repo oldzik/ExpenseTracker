@@ -155,8 +155,8 @@ namespace ExpenseTracker.Application.Services
             var plannedExpense = _plannedExpenseRepo.GetPlannedExpenseById(plannedExpenseId);
             var plannedExpenseVm = _mapper.Map<PlannedExpenseForEditVm>(plannedExpense);
             var detCat = _detailedCRepo.GetDetailedCategoryById(plannedExpense.DetailedCategoryId);
-            plannedExpenseVm.DetailedCategoryName = detCat.Name;
-            plannedExpenseVm.MainCategoryId = detCat.MainCategoryId;
+            plannedExpenseVm.DetailedCatName = detCat.Name;
+            plannedExpenseVm.MainCatId = detCat.MainCategoryId;
             return plannedExpenseVm;
 
         }

@@ -17,5 +17,6 @@ namespace ExpenseTracker.Application.Interfaces
         public void UpdateDetailedCategory(NewDetailedCategoryVm model);
         DetailedCategory GetDetailedCategoryById(int detailedCategoryId);
         void DeleteDetailedCategory(int detailedCategoryId);
+        NewDetailedCategoryVm GetNewDetailedCategoryToCreate(int mainCategoryId);
     }
 }

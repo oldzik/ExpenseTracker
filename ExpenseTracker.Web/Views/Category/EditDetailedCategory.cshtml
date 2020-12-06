@@ -4,8 +4,8 @@
     ViewData["Title"] = "EditDetailedCategory";
 }
 
-<h1 style="margin-top:33px;">Edytuj szczegółową podkategorię</h1>
-
+<h1 style="margin-top:33px;">@Model.MainCategoryName</h1>
+<h4 style="font-size:17px; margin-bottom:30px;">Edytuj podkategorię</h4>
 <hr />
 <div class="row">
     <div class="col-md-4" style="margin-top:7px;" >
@@ -26,7 +26,7 @@
                 <input type="submit" value="Zapisz" class="btn btn-primary" />
             </div>
             <div>
-                <a class="btn btn-outline-secondary" asp-action="Index">Cofnij</a>
+                <a class="btn btn-outline-secondary" asp-action="DetailedCategory" asp-route-mainCategoryId="@Model.MainCategoryId">Cofnij</a>
             </div>
         </form>
     </div>

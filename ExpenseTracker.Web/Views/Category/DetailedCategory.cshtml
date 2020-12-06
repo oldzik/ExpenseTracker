@@ -4,7 +4,8 @@
     ViewData["Title"] = "DetailedCategory";
 }
 
-<h1 style="margin-top:33px;">Szczegółowe kategorie</h1>
+<h1 style="margin-top:33px;">@Model.MainCategoryName</h1>
+<h4 style="font-size:17px; margin-bottom:30px;">Szczegółowe kategorie</h4>
 <p>
     <a asp-action="CreateDetailedCategory" asp-route-mainCategoryId="@Model.MainCategoryId" class="btn btn-dark" style="background-color: #565ee4; margin-top:10px; margin-bottom:10px;" >Dodaj kolejną podkategorię</a>
 </p>

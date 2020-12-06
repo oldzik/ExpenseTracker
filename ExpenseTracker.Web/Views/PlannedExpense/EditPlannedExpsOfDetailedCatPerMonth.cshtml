@@ -4,7 +4,7 @@
     ViewData["Title"] = "EditPlannedExpsOfDetailedCatPerMonth";
 }
 
-<h1 style="margin-top:35px; margin-bottom:8px;">@Model.DetailedCategoryName</h1>
+<h1 style="margin-top:35px; margin-bottom:8px;">@Model.DetailedCatName</h1>
 <h4 style="font-size:17px; margin-bottom:30px;">Edytuj zaplanowaną kwotę</h4>
 <h3>
     @Model.MonthOfYear.ToString("MMMM yyyy").ToUpper()
@@ -14,7 +14,7 @@
     var parms = new Dictionary<string, string>
 {
         { "monthOfYear", Model.MonthOfYear.ToString() },
-        { "mainCategoryId", Model.MainCategoryId.ToString()}
+        { "mainCategoryId", Model.MainCatId.ToString()}
     };
 }
 <div class="row">
@@ -35,7 +35,7 @@
                 <span asp-validation-for="Amount" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="hidden" asp-for="MainCategoryId" />
+                <input type="hidden" asp-for="MainCatId" />
             </div>
             <div class="form-group">
                 <input type="hidden" asp-for="MonthOfYear" />
