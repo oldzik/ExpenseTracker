@@ -15,15 +15,13 @@ namespace ExpenseTracker.Application.Services
     public class ExpenseService : IExpenseService
     {
         private readonly IMapper _mapper;
-        private readonly IUserRepository _userRepo;
         private readonly IBudgetRepository _budgetRepo;
         private readonly IDetailedCategoryRepository _detailedCRepo;
         private readonly IExpenseRepository _expenseRepo;
 
-        public ExpenseService(IMapper mapper, IUserRepository userRepo, IBudgetRepository budgetRepo, IExpenseRepository expenseRepo, IDetailedCategoryRepository detailedCRepo)
+        public ExpenseService(IMapper mapper,IBudgetRepository budgetRepo, IExpenseRepository expenseRepo, IDetailedCategoryRepository detailedCRepo)
         {
             _mapper = mapper;
-            _userRepo = userRepo;
             _budgetRepo = budgetRepo;
             _expenseRepo = expenseRepo;
             _detailedCRepo = detailedCRepo;
@@ -62,7 +60,7 @@ namespace ExpenseTracker.Application.Services
             var budget = _budgetRepo.GetBudgetByUserId(userId);
            
             var expenses = _expenseRepo.GetAllExpensesOfBudget(budget.Id)
-                .Where(e => e.Date >= monthOfYear && e.Date <=monthOfYear.AddMonths(1))
+                .Where(e => e.Date >= monthOfYear && e.Date <monthOfYear.AddMonths(1))
                 .ProjectTo<ExpenseForListVm>(_mapper.ConfigurationProvider).ToList();
 
 

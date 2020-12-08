@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ExpenseTracker.Application.Interfaces;
 using ExpenseTracker.Application.Services;
+using ExpenseTracker.Application.ViewModels.Expense;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,6 @@ namespace ExpenseTracker.Application
         {
             services.AddTransient<IBudgetService, BudgetService>();
             services.AddTransient<IExpenseService, ExpenseService>();
-            services.AddTransient<IUserService,UserService>();
             services.AddTransient<IMainCService,MainCService>();
             services.AddTransient<IDetailedCService,DetailedCService>();
             services.AddTransient<IPlannedExpenseService, PlannedExpenseService>();

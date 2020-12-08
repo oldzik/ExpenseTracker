@@ -464,3 +464,4 @@ C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\Razor\Views\Expense\GetExpensesOfDetailedCatPerMonth.cshtml.g.cs
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\Razor\Views\PlannedExpense\GetPlannedExpensesOfMainCategory.cshtml.g.cs
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\Razor\Views\PlannedExpense\EditPlannedExpsOfDetailedCatPerMonth.cshtml.g.cs
+C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Web\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Update.cshtml.g.cs

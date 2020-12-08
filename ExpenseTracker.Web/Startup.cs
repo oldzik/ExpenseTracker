@@ -43,7 +43,8 @@ namespace ExpenseTracker.Web
             services.AddApplication();
             services.AddInfrastructure();
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddFluentValidation();
+            services.AddTransient<IValidator<NewExpenseVm>, NewExpenseValidation>();
             services.AddRazorPages();
 
         }

@@ -16,12 +16,9 @@ namespace ExpenseTracker.Application.ViewModels.Expense
     public class NewExpenseVm : IMapFrom<ExpenseTracker.Domain.Model.Entity.Expense>
     {
         public int Id { get; set; }
-        [Required()]
         public string Name { get; set; }
-        [Required]
         public DateTime Date { get; set; }
         [DataType(DataType.Currency)]
-        [Required]
         public decimal Amount { get; set; }
         public int SelectedCategory { get; set; }
         public IEnumerable<SelectListItem> Categories { get; set; }
@@ -33,5 +30,14 @@ namespace ExpenseTracker.Application.ViewModels.Expense
                 .ForMember(d => d.DetailedCategoryId, opt => opt.MapFrom(s => s.SelectedCategory));
         }
 
+    }
+
+    public class NewExpenseValidation : AbstractValidator<NewExpenseVm>
+    {
+        public NewExpenseValidation()
+        {
+            RuleFor(x => x.Name).NotEmpty().NotNull().MinimumLength(2);
+            RuleFor(x => x.Amount).NotEmpty();
+        }
     }
 }

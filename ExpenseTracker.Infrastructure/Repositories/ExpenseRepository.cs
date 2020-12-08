@@ -49,7 +49,7 @@ namespace ExpenseTracker.Infrastructure.Repositories
         {
             var expenses = _context.Expenses
                 .Where(e => e.DetailedCategoryId == detailedCatId
-                && e.Date >= monthOfYear && e.Date <= monthOfYear.AddMonths(1));
+                && e.Date >= monthOfYear && e.Date < monthOfYear.AddMonths(1));
             return expenses;
         }
 
@@ -57,7 +57,7 @@ namespace ExpenseTracker.Infrastructure.Repositories
         {
             var expenses = _context.Expenses
                 .Where(e => e.DetailedCategory.MainCategoryId == mainCatId 
-                && e.Date >= monthOfYear && e.Date <= monthOfYear.AddMonths(1));
+                && e.Date >= monthOfYear && e.Date < monthOfYear.AddMonths(1));
             return expenses;
         }
 

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace ExpenseTracker.Web.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -23,34 +24,6 @@ namespace ExpenseTracker.Web.Controllers
         {
             return View(_userManager.Users);
         }
-
-
-        public ViewResult Create() => View();
-
-        //[HttpPost]
-        //public async Task<IActionResult> Create(User user)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        ApplicationUser appUser = new ApplicationUser
-        //        {
-        //            UserName = user.Name,
-        //            Email = user.Email
-        //        };
-
-        //        IdentityResult result = await _userManager.CreateAsync(appUser, user.Password);
-        //        if (result.Succeeded)
-        //            return RedirectToAction("Index");
-        //        else
-        //        {
-        //            foreach (IdentityError error in result.Errors)
-        //                ModelState.AddModelError("", error.Description);
-        //        }
-        //    }
-        //    return View(user);
-        //}
-
-
 
         public async Task<IActionResult> Update(string id)
         {
