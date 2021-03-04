@@ -47,15 +47,19 @@ namespace ExpenseTracker.Application.Services
         }
 
         public void DeleteExpense(int expenseId)
-        {
-            
+        {           
             _expenseRepo.DeleteExpense(expenseId);
+        }
+
+        public DateTime FirstDayOfMonthFromDateTime(DateTime dateTime)
+        {
+            return new DateTime(dateTime.Year, dateTime.Month, 1);
         }
 
         public ListExpenseForListVm GetAllExpensesForList(DateTime monthOfYear, string userId)
         {
-            if (monthOfYear.Day != 1)
-                monthOfYear = DateTime.ParseExact(monthOfYear.ToString(), "MM.dd.yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+            //if (monthOfYear.Day != 1)
+            //    monthOfYear = DateTime.ParseExact(monthOfYear.ToString(), "MM.dd.yyyy HH:mm:ss", CultureInfo.InvariantCulture);
 
             var budget = _budgetRepo.GetBudgetByUserId(userId);
            
@@ -76,10 +80,10 @@ namespace ExpenseTracker.Application.Services
 
         public ListPerMonthDetCatExpenseForListVm GetAllExpensesForListDetCatPerMonth(DateTime monthOfYear, int detailedCategoryId)
         {
-            if (monthOfYear.Day != 1)
-                monthOfYear = DateTime.ParseExact(monthOfYear.ToString(), "MM.dd.yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+            //if (monthOfYear.Day != 1)
+            //    monthOfYear = DateTime.ParseExact(monthOfYear.ToString(), "MM.dd.yyyy HH:mm:ss", CultureInfo.InvariantCulture);
 
-            int mainCatId = _detailedCRepo.GetDetailedCategoryById(detailedCategoryId).MainCategoryId;
+            //int mainCatId = _detailedCRepo.GetDetailedCategoryById(detailedCategoryId).MainCategoryId;
             var detCategory = _detailedCRepo.GetDetailedCategoryById(detailedCategoryId);
             var expenses = _expenseRepo.GetAllExpensesOfDetailedCategoryPerMonth(detailedCategoryId, monthOfYear)
                 .ProjectTo<ExpenseForListVm>(_mapper.ConfigurationProvider).ToList();
@@ -88,7 +92,7 @@ namespace ExpenseTracker.Application.Services
             {
                 Expenses = expenses,
                 DetailedCategoryName = detCategory.Name,
-                MainCategoryId = mainCatId,
+                MainCategoryId = detCategory.MainCategoryId,
                 MonthOfYear = monthOfYear,
                 Count = expenses.Count
             };

@@ -13,3 +13,33 @@ C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Infrastructure\obj\Debug\net
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Infrastructure\obj\Debug\netcoreapp3.1\ExpenseTracker.Infrastructure.pdb
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Infrastructure\obj\Debug\netcoreapp3.1\ExpenseTracker.Infrastructure.genruntimeconfig.cache
 C:\Users\OLGA\Desktop\ExpenseTracker\ExpenseTracker.Infrastructure\obj\Debug\netcoreapp3.1\ExpenseTracker.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\OLGA\Desktop\AR OPRO\ExpenseTracker\ExpenseTracker.Infrastructure\bin\Debug\netcoreapp3.1\ExpenseTracker.Infrastructure.deps.json
+C:\Users\OLGA\Desktop\AR OPRO\ExpenseTracker\ExpenseTracker.Infrastructure\bin\Debug\netcoreapp3.1\ExpenseTracker.Infrastructure.runtimeconfig.json
+C:\Users\OLGA\Desktop\AR OPRO\ExpenseTracker\ExpenseTracker.Infrastructure\bin\Debug\netcoreapp3.1\ExpenseTracker.Infrastructure.runtimeconfig.dev.json
+C:\Users\OLGA\Desktop\AR OPRO\ExpenseTracker\ExpenseTracker.Infrastructure\bin\Debug\netcoreapp3.1\ExpenseTracker.Infrastructure.dll
+C:\Users\OLGA\Desktop\AR OPRO\ExpenseTracker\ExpenseTracker.Infrastructure\bin\Debug\netcoreapp3.1\ExpenseTracker.Infrastructure.pdb
+C:\Users\OLGA\Desktop\AR OPRO\ExpenseTracker\ExpenseTracker.Infrastructure\bin\Debug\netcoreapp3.1\ExpenseTracker.Domain.dll
+C:\Users\OLGA\Desktop\AR OPRO\ExpenseTracker\ExpenseTracker.Infrastructure\bin\Debug\netcoreapp3.1\ExpenseTracker.Domain.pdb
+C:\Users\OLGA\Desktop\AR OPRO\ExpenseTracker\ExpenseTracker.Infrastructure\obj\Debug\netcoreapp3.1\ExpenseTracker.Infrastructure.csprojAssemblyReference.cache
+C:\Users\OLGA\Desktop\AR OPRO\ExpenseTracker\ExpenseTracker.Infrastructure\obj\Debug\netcoreapp3.1\ExpenseTracker.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\OLGA\Desktop\AR OPRO\ExpenseTracker\ExpenseTracker.Infrastructure\obj\Debug\netcoreapp3.1\ExpenseTracker.Infrastructure.AssemblyInfo.cs
+C:\Users\OLGA\Desktop\AR OPRO\ExpenseTracker\ExpenseTracker.Infrastructure\obj\Debug\netcoreapp3.1\ExpenseTracker.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\OLGA\Desktop\AR OPRO\ExpenseTracker\ExpenseTracker.Infrastructure\obj\Debug\netcoreapp3.1\ExpenseTracker.Infrastructure.csproj.CopyComplete
+C:\Users\OLGA\Desktop\AR OPRO\ExpenseTracker\ExpenseTracker.Infrastructure\obj\Debug\netcoreapp3.1\ExpenseTracker.Infrastructure.dll
+C:\Users\OLGA\Desktop\AR OPRO\ExpenseTracker\ExpenseTracker.Infrastructure\obj\Debug\netcoreapp3.1\ExpenseTracker.Infrastructure.pdb
+C:\Users\OLGA\Desktop\AR OPRO\ExpenseTracker\ExpenseTracker.Infrastructure\obj\Debug\netcoreapp3.1\ExpenseTracker.Infrastructure.genruntimeconfig.cache
+C:\Users\OLGA\Desktop\Semestr 5\AR OPRO\ExpenseTracker\ExpenseTracker.Infrastructure\bin\Debug\netcoreapp3.1\ExpenseTracker.Infrastructure.deps.json
+C:\Users\OLGA\Desktop\Semestr 5\AR OPRO\ExpenseTracker\ExpenseTracker.Infrastructure\bin\Debug\netcoreapp3.1\ExpenseTracker.Infrastructure.runtimeconfig.json
+C:\Users\OLGA\Desktop\Semestr 5\AR OPRO\ExpenseTracker\ExpenseTracker.Infrastructure\bin\Debug\netcoreapp3.1\ExpenseTracker.Infrastructure.runtimeconfig.dev.json
+C:\Users\OLGA\Desktop\Semestr 5\AR OPRO\ExpenseTracker\ExpenseTracker.Infrastructure\bin\Debug\netcoreapp3.1\ExpenseTracker.Infrastructure.dll
+C:\Users\OLGA\Desktop\Semestr 5\AR OPRO\ExpenseTracker\ExpenseTracker.Infrastructure\bin\Debug\netcoreapp3.1\ExpenseTracker.Infrastructure.pdb
+C:\Users\OLGA\Desktop\Semestr 5\AR OPRO\ExpenseTracker\ExpenseTracker.Infrastructure\bin\Debug\netcoreapp3.1\ExpenseTracker.Domain.dll
+C:\Users\OLGA\Desktop\Semestr 5\AR OPRO\ExpenseTracker\ExpenseTracker.Infrastructure\bin\Debug\netcoreapp3.1\ExpenseTracker.Domain.pdb
+C:\Users\OLGA\Desktop\Semestr 5\AR OPRO\ExpenseTracker\ExpenseTracker.Infrastructure\obj\Debug\netcoreapp3.1\ExpenseTracker.Infrastructure.csprojAssemblyReference.cache
+C:\Users\OLGA\Desktop\Semestr 5\AR OPRO\ExpenseTracker\ExpenseTracker.Infrastructure\obj\Debug\netcoreapp3.1\ExpenseTracker.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\OLGA\Desktop\Semestr 5\AR OPRO\ExpenseTracker\ExpenseTracker.Infrastructure\obj\Debug\netcoreapp3.1\ExpenseTracker.Infrastructure.AssemblyInfo.cs
+C:\Users\OLGA\Desktop\Semestr 5\AR OPRO\ExpenseTracker\ExpenseTracker.Infrastructure\obj\Debug\netcoreapp3.1\ExpenseTracker.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\OLGA\Desktop\Semestr 5\AR OPRO\ExpenseTracker\ExpenseTracker.Infrastructure\obj\Debug\netcoreapp3.1\ExpenseTracker.Infrastructure.csproj.CopyComplete
+C:\Users\OLGA\Desktop\Semestr 5\AR OPRO\ExpenseTracker\ExpenseTracker.Infrastructure\obj\Debug\netcoreapp3.1\ExpenseTracker.Infrastructure.dll
+C:\Users\OLGA\Desktop\Semestr 5\AR OPRO\ExpenseTracker\ExpenseTracker.Infrastructure\obj\Debug\netcoreapp3.1\ExpenseTracker.Infrastructure.pdb
+C:\Users\OLGA\Desktop\Semestr 5\AR OPRO\ExpenseTracker\ExpenseTracker.Infrastructure\obj\Debug\netcoreapp3.1\ExpenseTracker.Infrastructure.genruntimeconfig.cache

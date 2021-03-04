@@ -33,31 +33,30 @@ namespace ExpenseTracker.Web.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var claimsIdentity = (ClaimsIdentity)this.User.Identity;
-            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
-            var userId = claim.Value;
+            var userId = _userManager.GetUserId(HttpContext.User);
 
-            string currentMonthStr = "01." + DateTime.Today.Month + "." + DateTime.Today.Year;
-            DateTime currentMonth = DateTime.ParseExact(currentMonthStr, "dd.MM.yyyy", CultureInfo.InvariantCulture);
-            var expensesModel = _expenseService.GetAllExpensesForList(currentMonth,userId);
+            //Set day of current month to first day - expenses are displayed monthly
+            DateTime currentMonthOfYear = _expenseService.FirstDayOfMonthFromDateTime(DateTime.Today);
+
+            //Get all expenses of current month
+            var expensesModel = _expenseService.GetAllExpensesForList(currentMonthOfYear, userId);
             return View(expensesModel);
         }
 
         [HttpPost]
         public IActionResult Index(DateTime monthOfYear, string userId)
         {
-            var expensesModel = _expenseService.GetAllExpensesForList( monthOfYear, userId);
+            //Get all expenses of chosen month
+            var expensesModel = _expenseService.GetAllExpensesForList(monthOfYear, userId);
             return View(expensesModel);
-
         }
 
         [HttpGet]
         public IActionResult CreateExpense()
         {
-            var claimsIdentity = (ClaimsIdentity)this.User.Identity;
-            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
-            var userId = claim.Value;
+            var userId = _userManager.GetUserId(HttpContext.User);
 
+            //Create view model (with user's categories and userId) for new expense
             NewExpenseVm model = _expenseService.CreateNewExpense(userId);
             return View(model);
         }
@@ -65,6 +64,7 @@ namespace ExpenseTracker.Web.Controllers
         [HttpPost]
         public IActionResult CreateExpense(NewExpenseVm model)
         {
+            //Try to add expense to the database. If success, add amount to the user's budget.
             var id = _expenseService.AddExpense(model);
             if(id != 0)
             {
@@ -76,6 +76,7 @@ namespace ExpenseTracker.Web.Controllers
 
         public IActionResult DeleteExpense(int expenseId)
         {
+            //Subtract amount from budget and delete expense from db
             _budgetService.RemoveFromSum(expenseId);
             _expenseService.DeleteExpense(expenseId);
             return RedirectToAction("Index");
@@ -84,6 +85,7 @@ namespace ExpenseTracker.Web.Controllers
         [HttpGet]
         public IActionResult EditExpense(int expenseId)
         {
+            //Get expense from db, display view to edit
             var expense = _expenseService.GetExpenseForEdit(expenseId);
             return View(expense);
         }
@@ -96,10 +98,18 @@ namespace ExpenseTracker.Web.Controllers
             {
                 _budgetService.EditSum(model);
                 _expenseService.UpdateExpense(model);
-                return RedirectToAction("Index");
+                return RedirectToAction("ShowChosenMonth", new {chosenDate = model.Date });
             }
 
             return View(model);
+        }
+
+        public IActionResult ShowChosenMonth(DateTime chosenDate)
+        {
+            var userId = _userManager.GetUserId(HttpContext.User);
+            DateTime monthOfYear = _expenseService.FirstDayOfMonthFromDateTime(chosenDate.Date);
+            var expensesModel = _expenseService.GetAllExpensesForList(monthOfYear, userId);
+            return View("Index", expensesModel);
         }
 
         public IActionResult GetExpensesOfDetailedCatPerMonth(DateTime monthOfYear, int detailedCategoryId)

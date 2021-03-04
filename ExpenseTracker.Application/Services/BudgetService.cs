@@ -37,16 +37,18 @@ namespace ExpenseTracker.Application.Services
 
         public void AddToSum(int expenseId)
         {
+            //Get expense and budget from db, add amount and update budget.
             Expense exp = _expenseRepo.GetExpenseById(expenseId);
-            var budget = _budgetRepo.GetBudgetById(exp.BudgetId);
+            Budget budget = _budgetRepo.GetBudgetById(exp.BudgetId);
             budget.Sum += exp.Amount;
             _budgetRepo.UpdateAmount(budget);
         }
 
         public void RemoveFromSum(int expenseId)
         {
+            //Get expense and budget from db, subtract amount and update budget.
             Expense exp = _expenseRepo.GetExpenseById(expenseId);
-            var budget = _budgetRepo.GetBudgetById(exp.BudgetId);
+            Budget budget = _budgetRepo.GetBudgetById(exp.BudgetId);
             budget.Sum -= exp.Amount;
             _budgetRepo.UpdateAmount(budget);
         }
