@@ -17,11 +17,12 @@ namespace ExpenseTracker.Application.ViewModels.Expense
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public DateTime Date { get; set; }
         [DataType(DataType.Currency)]
         public decimal Amount { get; set; }
+        public DateTime Date { get; set; }      
         public int SelectedCategory { get; set; }
         public IEnumerable<SelectListItem> Categories { get; set; }
+        public int BudgetId { get; set; }
         public string UserId { get; set; }
 
         public void Mapping(Profile profile)

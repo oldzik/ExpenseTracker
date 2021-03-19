@@ -11,7 +11,7 @@
 
 <form asp-action="Index" asp-controller="Expense" method="post">
     <div class="row" style="margin-bottom:10px; margin-top:30px;">
-        <input style="margin-right:5px;" type="month" asp-for="MonthOfYear"/>
+        <input style="margin-right:5px;" type="month" asp-for="MonthOfYear" name="chosenDate"/>
         <input type="hidden"  asp-for="UserId"/>
         <input class="btn btn-success my-2 my-sm-0" type="submit" value="Wyszukaj" />
     </div>

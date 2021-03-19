@@ -16,6 +16,12 @@ namespace ExpenseTracker.Infrastructure.Repositories
             _context = context;
         }
 
+        public Expense GetExpenseById(int expenseId)
+        {
+            var expense = _context.Expenses.AsNoTracking().FirstOrDefault(e => e.Id == expenseId);
+            return expense;
+        }
+
         public int AddExpense(Expense exp)
         {
             _context.Expenses.Add(exp);
@@ -53,7 +59,7 @@ namespace ExpenseTracker.Infrastructure.Repositories
             return expenses;
         }
 
-        public IQueryable<Expense> GetAllExpensesOfMainCategory(int mainCatId, DateTime monthOfYear)
+        public IQueryable<Expense> GetAllExpensesOfMainCategoryPerMonth(int mainCatId, DateTime monthOfYear)
         {
             var expenses = _context.Expenses
                 .Where(e => e.DetailedCategory.MainCategoryId == mainCatId 
@@ -61,14 +67,10 @@ namespace ExpenseTracker.Infrastructure.Repositories
             return expenses;
         }
 
-        public Expense GetExpenseById(int expenseId)
-        {
-            var expense = _context.Expenses.AsNoTracking().FirstOrDefault(e => e.Id == expenseId);
-            return expense;
-        }
-
         public void UpdateExpense(Expense expense)
         {
+            //the update statement only updates the values that were actually changed 
+            //after you attached the entity to the context
             _context.Attach(expense);
             _context.Entry(expense).Property("Name").IsModified = true;
             _context.Entry(expense).Property("Date").IsModified = true;

@@ -40,11 +40,10 @@ namespace ExpenseTracker.Application.Services
             _plannedExpenseRepo.AddPlannedExpenses(newPlannedExpenses);
         }
 
-        public ListNewPlannedExpensePerMonthVm CreateNewPlannedExpPerMonth(DateTime monthOfYear, string userId)
+        public ListNewPlannedExpensePerMonthVm CreateNewPlannedExpPerMonth(DateTime date, string userId)
         {
-            if (monthOfYear.Day != 1)
-                monthOfYear = DateTime.ParseExact(monthOfYear.ToString(), "MM.dd.yyyy HH:mm:ss", CultureInfo.InvariantCulture);
-            List<NewPlannedExpenseVm> newPlannedExpenses = new List<NewPlannedExpenseVm>();
+            DateTime monthOfYear = FirstDayOfMonthFromDateTime(date);
+            var newPlannedExpenses = new List<NewPlannedExpenseVm>();
 
             var detCategories = _detailedCRepo.GetDetailedCategoriesByUserId(userId).ToList();
             for (int i = 0; i < detCategories.Count; i++)
@@ -66,10 +65,9 @@ namespace ExpenseTracker.Application.Services
             return newPlannedExpensesPerMonthVm;
         }
 
-        public PlannedExpensesOfAllMainCatVm GetPlannedExpensesOfAllMainCPerMonth(DateTime monthOfYear, string userId)
+        public PlannedExpensesOfAllMainCatVm GetPlannedExpensesOfAllMainCPerMonth(DateTime date, string userId)
         {
-            if(monthOfYear.Day != 1)
-                monthOfYear = DateTime.ParseExact(monthOfYear.ToString(), "MM.dd.yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+            DateTime monthOfYear = FirstDayOfMonthFromDateTime(date);
 
             PlannedExpensesOfAllMainCatVm model = new PlannedExpensesOfAllMainCatVm();
             model.PlannedExpOfMainCat = new List<PlannedExpensesOfMainCatVm>();
@@ -84,7 +82,7 @@ namespace ExpenseTracker.Application.Services
                     if (plannedExps.Count == 0)
                         break;
                         
-                    List<Expense> exps = _expenseRepo.GetAllExpensesOfMainCategory(mainCat.Id, monthOfYear).ToList();
+                    List<Expense> exps = _expenseRepo.GetAllExpensesOfMainCategoryPerMonth(mainCat.Id, monthOfYear).ToList();
                     //oblicz sume planned
                     //oblicz sume spent
                     decimal plannedAm = 0;
@@ -165,6 +163,21 @@ namespace ExpenseTracker.Application.Services
         {
             var plannedExpense = _mapper.Map<PlannedExpense>(model);
             _plannedExpenseRepo.UpdatePlannedExpense(plannedExpense);
+        }
+
+
+
+
+
+
+        //PRIVATE
+        private DateTime FirstDayOfMonthFromDateTime(DateTime dateTime)
+        {
+            //Set day of month to the first day - you plan a budget per month
+            if (dateTime.Day == 1)
+                return dateTime.Date;
+            else
+                return new DateTime(dateTime.Year, dateTime.Month, 1);
         }
     }
 }

@@ -34,6 +34,11 @@ namespace ExpenseTracker.Infrastructure.Repositories
             return budget;
         }
 
+        public int GetBudgetIdByUserId(string userId)
+        {
+            var budget = _context.Budgets.FirstOrDefault(a => a.ApplicationUserRef == userId);
+            return budget.Id;
+        }
 
         public Budget GetBudgetById(int id)
         {

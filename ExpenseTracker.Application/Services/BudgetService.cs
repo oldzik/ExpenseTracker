@@ -16,14 +16,17 @@ namespace ExpenseTracker.Application.Services
         private readonly IBudgetRepository _budgetRepo;
         private readonly IExpenseRepository _expenseRepo;
         private readonly IMainCategoryRepository _mainCRepo;
-        public BudgetService(IMapper mapper, IBudgetRepository budgetRepo, IExpenseRepository expenseRepo, IMainCategoryRepository mainCRepo)
+        private readonly IDetailedCategoryRepository _detailedCRepo;
+        public BudgetService(IMapper mapper, IBudgetRepository budgetRepo, IExpenseRepository expenseRepo, IMainCategoryRepository mainCRepo, IDetailedCategoryRepository detailedCRepo)
         {
             _mapper = mapper;
             _budgetRepo = budgetRepo;
             _expenseRepo = expenseRepo;
             _mainCRepo = mainCRepo;
+            _detailedCRepo = detailedCRepo;
         }
 
+        //git
         public void CreateBudgetForNewUser(string userId)
         {
             Budget newUserBudget = new Budget()
@@ -34,25 +37,30 @@ namespace ExpenseTracker.Application.Services
 
             _budgetRepo.AddBudget(newUserBudget);
         }
-
-        public void AddToSum(int expenseId)
+        //git
+        public bool ChangeSum(int expenseId, int operation)
         {
-            //Get expense and budget from db, add amount and update budget.
+            if (operation != 1 && operation != -1)
+                return false;
+            
+            //Get expense and budget from db, add(1) or subtract(-1) amount and update budget.
             Expense exp = _expenseRepo.GetExpenseById(expenseId);
             Budget budget = _budgetRepo.GetBudgetById(exp.BudgetId);
-            budget.Sum += exp.Amount;
+
+            switch (operation)
+            {
+                case 1:
+                    budget.Sum += exp.Amount;
+                    break;
+                case -1:
+                    budget.Sum -= exp.Amount;
+                    break;
+            }
             _budgetRepo.UpdateAmount(budget);
+            return true;
         }
 
-        public void RemoveFromSum(int expenseId)
-        {
-            //Get expense and budget from db, subtract amount and update budget.
-            Expense exp = _expenseRepo.GetExpenseById(expenseId);
-            Budget budget = _budgetRepo.GetBudgetById(exp.BudgetId);
-            budget.Sum -= exp.Amount;
-            _budgetRepo.UpdateAmount(budget);
-        }
-
+        //git
         public void EditSum(EditExpenseVm model)
         {
             Expense exp = _expenseRepo.GetExpenseById(model.Id);
@@ -63,42 +71,67 @@ namespace ExpenseTracker.Application.Services
             _budgetRepo.UpdateAmount(budget);
         }
 
-        public decimal SumAllExpensesAmountsOfDetailedCategories(List<DetailedCategory> detCategories)
+        //git
+        public void RemoveFromSumBeforeMainCategoryDelete(int mainCategoryId)
         {
-            decimal sum = 0;
-            List<Expense> expensesOfCategory;
-            foreach (var detCategory in detCategories)
-            {
-                expensesOfCategory = _expenseRepo.GetAllExpensesOfDetailedCategory(detCategory.Id).ToList();
-                
-                for (int i = 0; i < expensesOfCategory.Count; i++)
-                {
-                    sum += expensesOfCategory[i].Amount;
-                }
-            }
-            return sum;
+            List<DetailedCategory> detCategories = _detailedCRepo.GetDetailedCategoriesOfMainCategory(mainCategoryId).ToList();
+            var budget = GetBudgetOfMainCategory(mainCategoryId);
+            var sumToRemoveFromBudget = SumAllExpensesAmountsOfDetailedCategories(detCategories);
+          
+            UpdateBudgetBeforeCategoryDelete(budget, sumToRemoveFromBudget);
+        }
+        //git
+        public void RemoveFromSumBeforeDetailedCategoryDelete(int detailedCategoryId)
+        {
+            DetailedCategory detCategory = _detailedCRepo.GetDetailedCategoryById(detailedCategoryId);
+            int mainCategoryId = detCategory.MainCategoryId;
+            var budget = GetBudgetOfMainCategory(mainCategoryId);
+            var sumToRemoveFromBudget = SumAllExpensesAmountsOfDetailedCategory(detCategory);
+
+            UpdateBudgetBeforeCategoryDelete(budget, sumToRemoveFromBudget);
         }
 
-        public void RemoveFromSumBeforeCategoryDelete(Budget budget, decimal sumToRemoveFromBudget)
+
+
+        //PRYWATNE METODY
+
+        //git
+        private void UpdateBudgetBeforeCategoryDelete(Budget budget, decimal sumToRemove)
         {
-            budget.Sum -= sumToRemoveFromBudget;
+            budget.Sum -= sumToRemove;
             _budgetRepo.UpdateAmount(budget);
         }
-
-        public Budget GetBudgetOfMainCategory(int mainCategoryId)
+        //git
+        private Budget GetBudgetOfMainCategory(int mainCategoryId)
         {
             var userId = _mainCRepo.GetMainCategoryById(mainCategoryId).ApplicationUserId;
             var budget = _budgetRepo.GetBudgetByUserId(userId);
             return budget;
         }
-
-        public  decimal SumAllExpensesAmountsOfDetailedCategory(DetailedCategory detCategory)
+        //git
+        private decimal SumAllExpensesAmountsOfDetailedCategory(DetailedCategory detCategory)
         {
             decimal sum = 0;
             List<Expense> expensesOfCategory = _expenseRepo.GetAllExpensesOfDetailedCategory(detCategory.Id).ToList();
             for (int i = 0; i < expensesOfCategory.Count; i++)
             {
                 sum += expensesOfCategory[i].Amount;
+            }
+            return sum;
+        }
+        //git
+        private decimal SumAllExpensesAmountsOfDetailedCategories(List<DetailedCategory> detCategories)
+        {
+            decimal sum = 0;
+            List<Expense> expensesOfCategory; 
+            foreach (var detCategory in detCategories)
+            {
+                expensesOfCategory = _expenseRepo.GetAllExpensesOfDetailedCategory(detCategory.Id).ToList();
+
+                for (int i = 0; i < expensesOfCategory.Count; i++)
+                {
+                    sum += expensesOfCategory[i].Amount;
+                }
             }
             return sum;
         }

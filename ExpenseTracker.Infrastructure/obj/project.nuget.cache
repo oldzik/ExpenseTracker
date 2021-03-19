@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vW+f8PriuZSdScTebglFydKsjPeiDz2tEJgagHHGLIxE3hFGPNTkkrFanA2V94B0fsFK7aiqpmSg3Pn0ZLxAlA==",
+  "dgSpecHash": "RPj3vCkjyJjtOGyfJSj/eaAp9KpGrx1powIhYSLXhLA7ghStgRoR8tP9BOdPfUSyuPAJ1A0mrU6ps3pwyfmiLg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\OLGA\\Desktop\\ExpenseTracker\\ExpenseTracker.Infrastructure\\ExpenseTracker.Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\OLGA\\Desktop\\Moje projekty\\EXPENSE\\ExpenseTracker\\ExpenseTracker.Infrastructure\\ExpenseTracker.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\OLGA\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "C:\\Users\\OLGA\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

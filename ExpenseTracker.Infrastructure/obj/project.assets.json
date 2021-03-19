@@ -9417,20 +9417,20 @@
   },
   "packageFolders": {
     "C:\\Users\\OLGA\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\OLGA\\Desktop\\ExpenseTracker\\ExpenseTracker.Infrastructure\\ExpenseTracker.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\OLGA\\Desktop\\Moje projekty\\EXPENSE\\ExpenseTracker\\ExpenseTracker.Infrastructure\\ExpenseTracker.Infrastructure.csproj",
       "projectName": "ExpenseTracker.Infrastructure",
-      "projectPath": "C:\\Users\\OLGA\\Desktop\\ExpenseTracker\\ExpenseTracker.Infrastructure\\ExpenseTracker.Infrastructure.csproj",
+      "projectPath": "C:\\Users\\OLGA\\Desktop\\Moje projekty\\EXPENSE\\ExpenseTracker\\ExpenseTracker.Infrastructure\\ExpenseTracker.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\OLGA\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\OLGA\\Desktop\\ExpenseTracker\\ExpenseTracker.Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\OLGA\\Desktop\\Moje projekty\\EXPENSE\\ExpenseTracker\\ExpenseTracker.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
@@ -9447,9 +9447,10 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\OLGA\\Desktop\\ExpenseTracker\\ExpenseTracker.Domain\\ExpenseTracker.Domain.csproj": {
-              "projectPath": "C:\\Users\\OLGA\\Desktop\\ExpenseTracker\\ExpenseTracker.Domain\\ExpenseTracker.Domain.csproj"
+            "C:\\Users\\OLGA\\Desktop\\Moje projekty\\EXPENSE\\ExpenseTracker\\ExpenseTracker.Domain\\ExpenseTracker.Domain.csproj": {
+              "projectPath": "C:\\Users\\OLGA\\Desktop\\Moje projekty\\EXPENSE\\ExpenseTracker\\ExpenseTracker.Domain\\ExpenseTracker.Domain.csproj"
             }
           }
         }
@@ -9462,6 +9463,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
             "target": "Package",
@@ -9505,7 +9507,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

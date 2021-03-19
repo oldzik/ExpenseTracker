@@ -33,7 +33,7 @@
      <nav class="nav flex-column" style="float:left; background-color: #647e8a;">
         <a class="nav-link text-light" asp-action="Index" asp-controller="Expense">Twoje wydatki</a>
         <a class="nav-link text-light" asp-controller="Category" asp-action="Index">Zarządzaj kategoriami</a>
-        <a class="nav-link text-light" asp-controller="PlannedExpense" asp-action="Index" asp-route-monthOfYear="01.@DateTime.Today.Month.@DateTime.Today.Year">Zaplanuj budżet</a>
+        <a class="nav-link text-light" asp-controller="PlannedExpense" asp-action="Index" asp-route-currentDate="01.10.2020">Zaplanuj budżet</a>
      </nav>
     }
     <div class="container">

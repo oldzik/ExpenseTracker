@@ -22,14 +22,14 @@ namespace ExpenseTracker.Application.Services
             _detailedCRepo = detailedCRepo;
             _mainCRepo = mainCRepo;
         }
-
+        //git
         public int AddDetailedCategory(NewDetailedCategoryVm model)
         {
             var detCategory = _mapper.Map<DetailedCategory>(model);
             int id = _detailedCRepo.AddDetailedCategory(detCategory);
             return id;
         }
-
+        //git
         public void CreateDetailedCategoriesForNewUser(string userId)
         {
             var mainCategories = _mainCRepo.GetAllMainCategoriesOfUser(userId).ToList();
@@ -48,60 +48,49 @@ namespace ExpenseTracker.Application.Services
             _detailedCRepo.AddDetailedCategories(detailedCategories);
 
         }
-
+        //git
         public void DeleteDetailedCategory(int detailedCategoryId)
         {
             _detailedCRepo.DeleteDetailedCategory(detailedCategoryId);
         }
 
+        //git
         public ListDetailedCatForListVm GetDetailedCategoriesForList(int mainCategoryId)
         {
             var detailedCategories = _detailedCRepo.GetDetailedCategoriesOfMainCategory(mainCategoryId).ProjectTo<DetailedCatForListVm>
                 (_mapper.ConfigurationProvider).ToList();
-            var mainCategory = _mainCRepo.GetMainCategoryById(mainCategoryId);
+            string mainCategoryName = _mainCRepo.GetMainCategoryNameById(mainCategoryId);
 
             var detailedCatList = new ListDetailedCatForListVm()
             {
                 DetailedCategories = detailedCategories,
                 MainCategoryId = mainCategoryId,
-                MainCategoryName = mainCategory.Name,
+                MainCategoryName = mainCategoryName,
                 Count = detailedCategories.Count
             };
 
             return detailedCatList;
-
         }
-
-        public List<DetailedCategory> GetDetailedCategoriesOfMainCategory(int mainCategoryId)
-        {
-            var categories = _detailedCRepo.GetDetailedCategoriesOfMainCategory(mainCategoryId).ToList();
-            return categories;
-        }
-
-        public DetailedCategory GetDetailedCategoryById(int detailedCategoryId)
-        {
-            var detailedCategory = _detailedCRepo.GetDetailedCategoryById(detailedCategoryId);
-            return detailedCategory;
-        }
-
+        //git
         public NewDetailedCategoryVm GetDetailedCategoryForEdit(int detailedCategoryId)
         {
             var detailedCategory = _detailedCRepo.GetDetailedCategoryById(detailedCategoryId);
-            var mainCategory = _mainCRepo.GetMainCategoryById(detailedCategory.MainCategoryId);
-            var detailedCategoryVm = _mapper.Map<NewDetailedCategoryVm>(detailedCategory);
-            detailedCategoryVm.MainCategoryName = mainCategory.Name;
+            var mainCategoryName = _mainCRepo.GetMainCategoryNameById(detailedCategory.MainCategoryId);
+            var detailedCategoryVm = _mapper.Map<NewDetailedCategoryVm>(detailedCategory);       
+            detailedCategoryVm.MainCategoryName = mainCategoryName;
+
             return detailedCategoryVm;
         }
-
+        //git
         public NewDetailedCategoryVm GetNewDetailedCategoryToCreate(int mainCategoryId)
         {
-            var mainCategory = _mainCRepo.GetMainCategoryById(mainCategoryId);
+            var mainCategoryName = _mainCRepo.GetMainCategoryNameById(mainCategoryId);
             var model = new NewDetailedCategoryVm();
             model.MainCategoryId = mainCategoryId;
-            model.MainCategoryName = mainCategory.Name;
+            model.MainCategoryName = mainCategoryName;
             return model;
         }
-
+        //git
         public void UpdateDetailedCategory(NewDetailedCategoryVm model)
         {
             var detailedCategory = _mapper.Map<DetailedCategory>(model);

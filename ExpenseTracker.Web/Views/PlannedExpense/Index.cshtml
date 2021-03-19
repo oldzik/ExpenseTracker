@@ -55,7 +55,7 @@ else
 }
 
 <div class="row">
-    <a class="btn btn-success" style="margin-right:13px" asp-action="Index" asp-route-monthOfYear="@Model.MonthOfYear.AddMonths(-1)">Poprzedni miesiąc</a>
-    <a class="btn btn-success" asp-action="Index" asp-route-monthOfYear="@Model.MonthOfYear.AddMonths(1)">Następny miesiąc</a>
+    <a class="btn btn-success" style="margin-right:13px" asp-action="Index" asp-route-currentDate="@Model.MonthOfYear.AddMonths(-1)">Poprzedni miesiąc</a>
+    <a class="btn btn-success" asp-action="Index" asp-route-currentDate="@Model.MonthOfYear.AddMonths(1)">Następny miesiąc</a>
 </div>
 

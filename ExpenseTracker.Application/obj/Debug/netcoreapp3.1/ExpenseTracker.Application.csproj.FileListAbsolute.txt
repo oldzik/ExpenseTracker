@@ -34,3 +34,15 @@ C:\Users\OLGA\Desktop\Semestr 5\AR OPRO\ExpenseTracker\ExpenseTracker.Applicatio
 C:\Users\OLGA\Desktop\Semestr 5\AR OPRO\ExpenseTracker\ExpenseTracker.Application\obj\Debug\netcoreapp3.1\ExpenseTracker.Application.csproj.CopyComplete
 C:\Users\OLGA\Desktop\Semestr 5\AR OPRO\ExpenseTracker\ExpenseTracker.Application\obj\Debug\netcoreapp3.1\ExpenseTracker.Application.dll
 C:\Users\OLGA\Desktop\Semestr 5\AR OPRO\ExpenseTracker\ExpenseTracker.Application\obj\Debug\netcoreapp3.1\ExpenseTracker.Application.pdb
+C:\Users\OLGA\Desktop\Moje projekty\EXPENSE\ExpenseTracker\ExpenseTracker.Application\bin\Debug\netcoreapp3.1\ExpenseTracker.Application.deps.json
+C:\Users\OLGA\Desktop\Moje projekty\EXPENSE\ExpenseTracker\ExpenseTracker.Application\bin\Debug\netcoreapp3.1\ExpenseTracker.Application.dll
+C:\Users\OLGA\Desktop\Moje projekty\EXPENSE\ExpenseTracker\ExpenseTracker.Application\bin\Debug\netcoreapp3.1\ExpenseTracker.Application.pdb
+C:\Users\OLGA\Desktop\Moje projekty\EXPENSE\ExpenseTracker\ExpenseTracker.Application\bin\Debug\netcoreapp3.1\ExpenseTracker.Domain.dll
+C:\Users\OLGA\Desktop\Moje projekty\EXPENSE\ExpenseTracker\ExpenseTracker.Application\bin\Debug\netcoreapp3.1\ExpenseTracker.Domain.pdb
+C:\Users\OLGA\Desktop\Moje projekty\EXPENSE\ExpenseTracker\ExpenseTracker.Application\obj\Debug\netcoreapp3.1\ExpenseTracker.Application.csprojAssemblyReference.cache
+C:\Users\OLGA\Desktop\Moje projekty\EXPENSE\ExpenseTracker\ExpenseTracker.Application\obj\Debug\netcoreapp3.1\ExpenseTracker.Application.AssemblyInfoInputs.cache
+C:\Users\OLGA\Desktop\Moje projekty\EXPENSE\ExpenseTracker\ExpenseTracker.Application\obj\Debug\netcoreapp3.1\ExpenseTracker.Application.AssemblyInfo.cs
+C:\Users\OLGA\Desktop\Moje projekty\EXPENSE\ExpenseTracker\ExpenseTracker.Application\obj\Debug\netcoreapp3.1\ExpenseTracker.Application.csproj.CoreCompileInputs.cache
+C:\Users\OLGA\Desktop\Moje projekty\EXPENSE\ExpenseTracker\ExpenseTracker.Application\obj\Debug\netcoreapp3.1\ExpenseTracker.Application.csproj.CopyComplete
+C:\Users\OLGA\Desktop\Moje projekty\EXPENSE\ExpenseTracker\ExpenseTracker.Application\obj\Debug\netcoreapp3.1\ExpenseTracker.Application.dll
+C:\Users\OLGA\Desktop\Moje projekty\EXPENSE\ExpenseTracker\ExpenseTracker.Application\obj\Debug\netcoreapp3.1\ExpenseTracker.Application.pdb

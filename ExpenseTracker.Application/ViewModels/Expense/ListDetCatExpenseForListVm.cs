@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ExpenseTracker.Application.ViewModels.Expense
 {
-    public class ListPerMonthDetCatExpenseForListVm
+    public class ListDetCatExpenseForListVm
     {
         public List<ExpenseForListVm> Expenses { get; set; }
         public int MainCategoryId { get; set; }

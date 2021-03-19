@@ -35,7 +35,7 @@
                 @Html.ActionLink("Edytuj", "EditMainCategory", new { mainCategoryId = item.Id  }) |
                 @Html.ActionLink("Usuń", "DeleteMainCategory", new { mainCategoryId = item.Id  }) |
                 @Html.ActionLink("Dodaj podkategorię", "CreateDetailedCategory", new { mainCategoryId = item.Id  }) |
-                @Html.ActionLink("Pokaż listę podkategorii", "DetailedCategory", new {  mainCategoryId=item.Id  })
+                @Html.ActionLink("Pokaż listę podkategorii", "DetailedCategories", new {  mainCategoryId=item.Id  })
             </td>
         </tr>
 }

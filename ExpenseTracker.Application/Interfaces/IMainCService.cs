@@ -1,4 +1,5 @@
 ﻿using ExpenseTracker.Application.ViewModels.MainCategory;
+using ExpenseTracker.Domain.Model.Entity;
 using System;
 using System.Collections.Generic;
 using System.Text;

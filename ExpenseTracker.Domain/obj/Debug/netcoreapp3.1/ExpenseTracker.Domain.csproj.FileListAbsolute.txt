@@ -25,3 +25,12 @@ C:\Users\OLGA\Desktop\Semestr 5\AR OPRO\ExpenseTracker\ExpenseTracker.Domain\obj
 C:\Users\OLGA\Desktop\Semestr 5\AR OPRO\ExpenseTracker\ExpenseTracker.Domain\obj\Debug\netcoreapp3.1\ExpenseTracker.Domain.csproj.CoreCompileInputs.cache
 C:\Users\OLGA\Desktop\Semestr 5\AR OPRO\ExpenseTracker\ExpenseTracker.Domain\obj\Debug\netcoreapp3.1\ExpenseTracker.Domain.dll
 C:\Users\OLGA\Desktop\Semestr 5\AR OPRO\ExpenseTracker\ExpenseTracker.Domain\obj\Debug\netcoreapp3.1\ExpenseTracker.Domain.pdb
+C:\Users\OLGA\Desktop\Moje projekty\EXPENSE\ExpenseTracker\ExpenseTracker.Domain\bin\Debug\netcoreapp3.1\ExpenseTracker.Domain.deps.json
+C:\Users\OLGA\Desktop\Moje projekty\EXPENSE\ExpenseTracker\ExpenseTracker.Domain\bin\Debug\netcoreapp3.1\ExpenseTracker.Domain.dll
+C:\Users\OLGA\Desktop\Moje projekty\EXPENSE\ExpenseTracker\ExpenseTracker.Domain\bin\Debug\netcoreapp3.1\ExpenseTracker.Domain.pdb
+C:\Users\OLGA\Desktop\Moje projekty\EXPENSE\ExpenseTracker\ExpenseTracker.Domain\obj\Debug\netcoreapp3.1\ExpenseTracker.Domain.csprojAssemblyReference.cache
+C:\Users\OLGA\Desktop\Moje projekty\EXPENSE\ExpenseTracker\ExpenseTracker.Domain\obj\Debug\netcoreapp3.1\ExpenseTracker.Domain.AssemblyInfoInputs.cache
+C:\Users\OLGA\Desktop\Moje projekty\EXPENSE\ExpenseTracker\ExpenseTracker.Domain\obj\Debug\netcoreapp3.1\ExpenseTracker.Domain.AssemblyInfo.cs
+C:\Users\OLGA\Desktop\Moje projekty\EXPENSE\ExpenseTracker\ExpenseTracker.Domain\obj\Debug\netcoreapp3.1\ExpenseTracker.Domain.csproj.CoreCompileInputs.cache
+C:\Users\OLGA\Desktop\Moje projekty\EXPENSE\ExpenseTracker\ExpenseTracker.Domain\obj\Debug\netcoreapp3.1\ExpenseTracker.Domain.dll
+C:\Users\OLGA\Desktop\Moje projekty\EXPENSE\ExpenseTracker\ExpenseTracker.Domain\obj\Debug\netcoreapp3.1\ExpenseTracker.Domain.pdb

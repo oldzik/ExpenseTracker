@@ -1,7 +1,7 @@
 ﻿@model ExpenseTracker.Application.ViewModels.DetailedCategory.ListDetailedCatForListVm
 
 @{
-    ViewData["Title"] = "DetailedCategory";
+    ViewData["Title"] = "DetailedCategories";
 }
 
 <h1 style="margin-top:33px;">@Model.MainCategoryName</h1>
@@ -33,7 +33,7 @@
             </td>
             <td>
                 @Html.ActionLink("Edytuj", "EditDetailedCategory", new { detailedCategoryId=item.Id  }) |
-                @Html.ActionLink("Usuń", "DeleteDetailedCategory", new { detailedCategoryId = item.Id })
+                @Html.ActionLink("Usuń", "DeleteDetailedCategory", new { detailedCategoryId = item.Id, mainCatId = Model.MainCategoryId })
             </td>
         </tr>
 }

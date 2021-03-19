@@ -8,6 +8,8 @@ using Microsoft.Extensions.Logging;
 using ExpenseTracker.Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using ExpenseTracker.Domain.Model.Entity;
+using Microsoft.AspNetCore.Identity;
 
 namespace ExpenseTracker.Web.Controllers
 {
@@ -15,23 +17,21 @@ namespace ExpenseTracker.Web.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, UserManager<ApplicationUser> userManager)
         {
             _logger = logger;
+            _userManager = userManager;
         }
 
         public IActionResult Index()
         {
-            var claimsIdentity = (ClaimsIdentity)this.User.Identity;
-            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
-
-            if(claim != null)
+            string userId = _userManager.GetUserId(HttpContext.User);
+            if (userId != null)
             {
-                var userId = claim.Value;
                 return RedirectToAction("Index", "Expense");
             }
-
             return View();
         }
 

@@ -15,7 +15,6 @@ namespace ExpenseTracker.Application.Interfaces
         public void DeleteExpense(int expenseId);
         public EditExpenseVm GetExpenseForEdit(int expenseId);
         public void UpdateExpense(EditExpenseVm model);
-        public ListPerMonthDetCatExpenseForListVm GetAllExpensesForListDetCatPerMonth(DateTime monthOfYear, int detailedCategoryId);
-        public DateTime FirstDayOfMonthFromDateTime(DateTime dateTime);
+        public ListDetCatExpenseForListVm GetAllExpensesOfDetCatPerMonth(DateTime monthOfYear, int detailedCategoryId);
     }
 }

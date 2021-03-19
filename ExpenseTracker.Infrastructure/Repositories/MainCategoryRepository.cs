@@ -50,6 +50,11 @@ namespace ExpenseTracker.Infrastructure.Repositories
             return mainCategory;
         }
 
+        public string GetMainCategoryNameById(int mainCategoryId)
+        {
+            var name = _context.MainCategories.FirstOrDefault(c => c.Id == mainCategoryId).Name;
+            return name;
+        }
 
         public void UpdateMainCategory(MainCategory mainCategory)
         {

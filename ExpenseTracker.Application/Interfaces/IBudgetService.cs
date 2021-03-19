@@ -9,12 +9,9 @@ namespace ExpenseTracker.Application.Interfaces
     public interface IBudgetService
     {
         public void CreateBudgetForNewUser(string userId);
-        public void AddToSum(int expenseId);
-        public void RemoveFromSum(int expenseId);
+        public bool ChangeSum(int expenseId, int operation);
         public void EditSum(EditExpenseVm model);
-        public decimal SumAllExpensesAmountsOfDetailedCategories(List<DetailedCategory> detCategories);
-        void RemoveFromSumBeforeCategoryDelete(Budget budget,decimal sumToRemoveFromBudget);
-        Budget GetBudgetOfMainCategory(int mainCategoryId);
-        decimal SumAllExpensesAmountsOfDetailedCategory(DetailedCategory detCategory);
+        public void RemoveFromSumBeforeMainCategoryDelete(int mainCategoryId);
+        public void RemoveFromSumBeforeDetailedCategoryDelete(int detCategoryId);
     }
 }

@@ -1,6 +1,8 @@
 ﻿using ExpenseTracker.Application.Interfaces;
 using ExpenseTracker.Application.ViewModels.PlannedExpense;
+using ExpenseTracker.Domain.Model.Entity;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -14,32 +16,31 @@ namespace ExpenseTracker.Web.Controllers
 {
     [Authorize(Roles = "User")]
     public class PlannedExpenseController : Controller
-    {
+    { 
         private readonly ILogger<PlannedExpenseController> _logger;
         private readonly IPlannedExpenseService _plannedExpService;
-        public PlannedExpenseController(ILogger<PlannedExpenseController> logger, IPlannedExpenseService plannedExpService)
+        private readonly UserManager<ApplicationUser> _userManager;
+        public PlannedExpenseController(ILogger<PlannedExpenseController> logger, IPlannedExpenseService plannedExpService, UserManager<ApplicationUser> userManager)
         {
             _logger = logger;
             _plannedExpService = plannedExpService;
+            _userManager = userManager;
         }
 
-        public IActionResult Index(DateTime monthOfYear)
+        public IActionResult Index(DateTime currentDate)
         {
-            var claimsIdentity = (ClaimsIdentity)this.User.Identity;
-            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
-            var userId = claim.Value;
+            var userId = _userManager.GetUserId(HttpContext.User);
 
-            var model =  _plannedExpService.GetPlannedExpensesOfAllMainCPerMonth(monthOfYear, userId);
+            var model =  _plannedExpService.GetPlannedExpensesOfAllMainCPerMonth(currentDate, userId);
             return View(model);
 
         }
 
+        //git
         [HttpGet]
         public IActionResult PlanExpensesPerMonth(DateTime monthOfYear)
         {
-            var claimsIdentity = (ClaimsIdentity)this.User.Identity;
-            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
-            var userId = claim.Value;
+            var userId = _userManager.GetUserId(HttpContext.User);
 
             var model = _plannedExpService.CreateNewPlannedExpPerMonth(monthOfYear,userId);
             return View(model);

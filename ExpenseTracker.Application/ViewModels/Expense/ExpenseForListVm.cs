@@ -17,8 +17,7 @@ namespace ExpenseTracker.Application.ViewModels.Expense
         public void Mapping(Profile profile)
         {
             profile.CreateMap<ExpenseTracker.Domain.Model.Entity.Expense, ExpenseForListVm>()
-                .ForMember(d => d.Category, opt => opt.MapFrom(s => s.DetailedCategory.Name));
-        
+                .ForMember(d => d.Category, opt => opt.MapFrom(s => s.DetailedCategory.Name));       
         }
     }
 }

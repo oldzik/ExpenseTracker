@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IYhawAKCY+/BlS03vRbcsvWW7uYqmVHEvJRGlzVhd9LREYhUjEPxi3PwYftcPbC7VlCG3yHSmYnwIrfqcST4sA==",
+  "dgSpecHash": "7q53tgp39OsXmEPhA0EvWqtOGTa+c4crZ9CZo8MmKW/yNI9p9mgYYr8oebQe49W6BLr9HW5Z82RA2d6hvyUTBw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\OLGA\\Desktop\\ExpenseTracker\\ExpenseTracker.Web\\ExpenseTracker.Web.csproj",
+  "projectFilePath": "C:\\Users\\OLGA\\Desktop\\Moje projekty\\EXPENSE\\ExpenseTracker\\ExpenseTracker.Web\\ExpenseTracker.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\OLGA\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\OLGA\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",

@@ -19,7 +19,6 @@ using ExpenseTracker.Application.ViewModels.Expense;
 using FluentValidation;
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
-
 namespace ExpenseTracker.Web
 {
     public class Startup
@@ -47,6 +46,7 @@ namespace ExpenseTracker.Web
             services.AddTransient<IValidator<NewExpenseVm>, NewExpenseValidation>();
             services.AddRazorPages();
 
+
         }
 
 
@@ -72,9 +72,14 @@ namespace ExpenseTracker.Web
             {
                 DefaultRequestCulture = new RequestCulture(defaultCulture),
                 SupportedCultures = new List<CultureInfo> { defaultCulture },
-                SupportedUICultures = new List<CultureInfo> { defaultCulture }                
+                SupportedUICultures = new List<CultureInfo> { defaultCulture }
             };
             app.UseRequestLocalization(localizationOptions);
+            /*var supportedCultures = new[] { "pl-PL","en-US" };
+            var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[0])
+                .AddSupportedCultures(supportedCultures)
+                .AddSupportedUICultures(supportedCultures);
+            app.UseRequestLocalization(localizationOptions);*/
 
             app.UseRouting();
 
