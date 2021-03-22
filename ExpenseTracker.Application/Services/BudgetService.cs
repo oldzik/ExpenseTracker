@@ -17,6 +17,7 @@ namespace ExpenseTracker.Application.Services
         private readonly IExpenseRepository _expenseRepo;
         private readonly IMainCategoryRepository _mainCRepo;
         private readonly IDetailedCategoryRepository _detailedCRepo;
+
         public BudgetService(IMapper mapper, IBudgetRepository budgetRepo, IExpenseRepository expenseRepo, IMainCategoryRepository mainCRepo, IDetailedCategoryRepository detailedCRepo)
         {
             _mapper = mapper;
@@ -26,7 +27,6 @@ namespace ExpenseTracker.Application.Services
             _detailedCRepo = detailedCRepo;
         }
 
-        //git
         public void CreateBudgetForNewUser(string userId)
         {
             Budget newUserBudget = new Budget()
@@ -37,7 +37,7 @@ namespace ExpenseTracker.Application.Services
 
             _budgetRepo.AddBudget(newUserBudget);
         }
-        //git
+
         public bool ChangeSum(int expenseId, int operation)
         {
             if (operation != 1 && operation != -1)
@@ -60,7 +60,6 @@ namespace ExpenseTracker.Application.Services
             return true;
         }
 
-        //git
         public void EditSum(EditExpenseVm model)
         {
             Expense exp = _expenseRepo.GetExpenseById(model.Id);
@@ -71,7 +70,6 @@ namespace ExpenseTracker.Application.Services
             _budgetRepo.UpdateAmount(budget);
         }
 
-        //git
         public void RemoveFromSumBeforeMainCategoryDelete(int mainCategoryId)
         {
             List<DetailedCategory> detCategories = _detailedCRepo.GetDetailedCategoriesOfMainCategory(mainCategoryId).ToList();
@@ -80,7 +78,7 @@ namespace ExpenseTracker.Application.Services
           
             UpdateBudgetBeforeCategoryDelete(budget, sumToRemoveFromBudget);
         }
-        //git
+
         public void RemoveFromSumBeforeDetailedCategoryDelete(int detailedCategoryId)
         {
             DetailedCategory detCategory = _detailedCRepo.GetDetailedCategoryById(detailedCategoryId);
@@ -91,24 +89,19 @@ namespace ExpenseTracker.Application.Services
             UpdateBudgetBeforeCategoryDelete(budget, sumToRemoveFromBudget);
         }
 
-
-
-        //PRYWATNE METODY
-
-        //git
         private void UpdateBudgetBeforeCategoryDelete(Budget budget, decimal sumToRemove)
         {
             budget.Sum -= sumToRemove;
             _budgetRepo.UpdateAmount(budget);
         }
-        //git
+
         private Budget GetBudgetOfMainCategory(int mainCategoryId)
         {
             var userId = _mainCRepo.GetMainCategoryById(mainCategoryId).ApplicationUserId;
             var budget = _budgetRepo.GetBudgetByUserId(userId);
             return budget;
         }
-        //git
+
         private decimal SumAllExpensesAmountsOfDetailedCategory(DetailedCategory detCategory)
         {
             decimal sum = 0;
@@ -119,7 +112,7 @@ namespace ExpenseTracker.Application.Services
             }
             return sum;
         }
-        //git
+
         private decimal SumAllExpensesAmountsOfDetailedCategories(List<DetailedCategory> detCategories)
         {
             decimal sum = 0;

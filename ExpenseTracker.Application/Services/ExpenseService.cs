@@ -81,7 +81,6 @@ namespace ExpenseTracker.Application.Services
             return expenseList;
         }
 
-        //wszystkie wydatki szczegółowej kategorii na miesiąc
         public ListDetCatExpenseForListVm GetAllExpensesOfDetCatPerMonth(DateTime monthOfYear, int detailedCategoryId)
         {
 
@@ -98,7 +97,6 @@ namespace ExpenseTracker.Application.Services
                 Count = expenses.Count
             };
             return expenseList;
-
         }
 
         private DateTime FirstDayOfMonthFromDateTime(DateTime dateTime)

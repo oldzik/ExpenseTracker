@@ -20,9 +20,9 @@
             @for (int i = 0; i < Model.PlannedExpenses.Count; i++)
             {
                 <div class="form-group">
-                    <label class="control-label">@Model.PlannedExpenses[i].DetCategory.Name</label>
-                    <input type="hidden" asp-for="@Model.PlannedExpenses[i].DetCategory.Id" />
-                    <input type="hidden" asp-for="@Model.PlannedExpenses[i].DetCategory.Name" />
+                    <input type="hidden" asp-for="@Model.PlannedExpenses[i].DetailedCategoryId" />
+                    <input type="hidden" asp-for="@Model.PlannedExpenses[i].DetailedCategoryName" />
+                    <label class="control-label">@Model.PlannedExpenses[i].DetailedCategoryName</label>
                     <input asp-for="@Model.PlannedExpenses[i].Amount" class="form-control" />
                     <span asp-validation-for="@Model.PlannedExpenses[i].Amount" class="text-danger"></span>
                 </div>
@@ -31,7 +31,7 @@
                 <input type="submit" value="Utwórz" class="btn btn-primary" />
             </div>
             <div>
-                <a class="btn btn-outline-secondary"  asp-action="Index" asp-route-monthOfYear="@Model.MonthOfYear">Cofnij</a>
+                <a class="btn btn-outline-secondary"  asp-action="Index" asp-route-currentDate="@Model.MonthOfYear.ToString("d")">Cofnij</a>
             </div>
         </form>
     </div>

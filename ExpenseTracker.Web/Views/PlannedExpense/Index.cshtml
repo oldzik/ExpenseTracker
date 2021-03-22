@@ -9,7 +9,7 @@
 <h3>
     @Model.MonthOfYear.ToString("MMMM yyyy").ToUpper()
 </h3>
-@if (Model.Count > 0)
+@if (Model.SumOfPlanned != 0)
 {
     <table class="table">
         <thead style="background-color:#d0d2d7;">
@@ -30,7 +30,7 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Name)
+                        @Html.DisplayFor(modelItem => item.MainCategoryName)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.PlannedAmount)
@@ -39,7 +39,7 @@
                         @Html.DisplayFor(modelItem => item.SpentAmount)
                     </td>
                     <td>
-                        @Html.ActionLink("Pokaż szczegóły", "GetPlannedExpensesOfMainCategory", new { monthOfYear=Model.MonthOfYear, mainCategoryId=item.Id })
+                        @Html.ActionLink("Pokaż szczegóły", "GetPlannedExpensesOfMainCategory", new { monthOfYear=Model.MonthOfYear.ToString("dd.MM.yyyy"), mainCategoryId=item.MainCategoryId })
                     </td>
                 </tr>
             }

@@ -38,6 +38,12 @@ namespace ExpenseTracker.Infrastructure.Repositories
             }
         }
 
+        public int GetCountOfDetailedCategories(int mainCategoryId)
+        {
+            var count = _context.DetailedCategories.Where(c => c.MainCategoryId == mainCategoryId).Count();
+            return count;
+        }
+
         public IQueryable<MainCategory> GetAllMainCategoriesOfUser(string userId)
         {
             var categories = _context.MainCategories.Where(c => c.ApplicationUserId == userId);

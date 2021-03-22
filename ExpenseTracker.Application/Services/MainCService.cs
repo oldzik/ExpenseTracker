@@ -20,7 +20,7 @@ namespace ExpenseTracker.Application.Services
             _mapper = mapper;
             _mainCRepo = mainCRepo;
         }
-        //git
+
         public int AddMainCategory(NewMainCategoryVm model, string userId)
         {
             var mainCat = _mapper.Map<MainCategory>(model);
@@ -28,7 +28,7 @@ namespace ExpenseTracker.Application.Services
             var id = _mainCRepo.AddMainCategory(mainCat);
             return id;
         }
-        //git
+
         public void CreateMainCategoriesForNewUser(string userId)
         {
             MainCategory m1 = new MainCategory() { Name = "Wydatki codzienne", ApplicationUserId = userId };
@@ -38,14 +38,14 @@ namespace ExpenseTracker.Application.Services
 
             _mainCRepo.AddMainCategories(mainCategories);
         }
-        //git
+
         public NewMainCategoryVm GetMainCategoryForEdit(int mainCategoryId)
         {
             var mainCategory = _mainCRepo.GetMainCategoryById(mainCategoryId);
             var mainCategoryVm = _mapper.Map<NewMainCategoryVm>(mainCategory);
             return mainCategoryVm;
         }
-        //git
+
         public ListMainCatForListVm GetMainCategoriesForList(string userId)
         {
             var mainCategories = _mainCRepo.GetAllMainCategoriesOfUser(userId).ProjectTo<MainCatForListVm>
@@ -59,17 +59,16 @@ namespace ExpenseTracker.Application.Services
 
             return mainCategoryList;
         }
-        //git
+
         public void UpdateMainCategory(NewMainCategoryVm model)
         {
             var mainCategory = _mapper.Map<MainCategory>(model);
             _mainCRepo.UpdateMainCategory(mainCategory);
         }
-        //git
+
         public void DeleteMainCategory(int mainCategoryId)
         {
             _mainCRepo.DeleteMainCategory(mainCategoryId);
         }
-
     }
 }

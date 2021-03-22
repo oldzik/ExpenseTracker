@@ -11,9 +11,6 @@ namespace ExpenseTracker.Domain.Model.Entity
         public DateTime MonthOfYear { get; set; }
         public int DetailedCategoryId { get; set; }
 
-
         public DetailedCategory DetailedCategory { get; set; }
-
-
     }
 }

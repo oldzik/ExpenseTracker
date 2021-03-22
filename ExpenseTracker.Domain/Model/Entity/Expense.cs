@@ -15,6 +15,5 @@ namespace ExpenseTracker.Domain.Model.Entity
 
         public Budget Budget { get; set; }
         public DetailedCategory DetailedCategory { get; set; }
-
     }
 }

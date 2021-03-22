@@ -109,11 +109,11 @@ namespace ExpenseTracker.Web.Controllers
             return View("Index", expensesModel);
         }
 
-        public IActionResult GetExpensesOfDetailedCatPerMonth(DateTime monthOfYear, int detailedCategoryId)
+        public IActionResult GetExpensesOfDetailedCatPerMonth(string monthOfYear, int detailedCategoryId)
         {
-            var model = _expenseService.GetAllExpensesOfDetCatPerMonth(monthOfYear, detailedCategoryId);
+            DateTime date = DateTime.Parse(monthOfYear);
+            var model = _expenseService.GetAllExpensesOfDetCatPerMonth(date, detailedCategoryId);
             return View(model);
         }
-
     }
 }

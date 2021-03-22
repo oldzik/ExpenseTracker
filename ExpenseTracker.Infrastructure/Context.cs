@@ -28,7 +28,6 @@ namespace ExpenseTracker.Infrastructure
                 .HasOne(a => a.Budget).WithOne(b => b.ApplicationUser)
                 .HasForeignKey<Budget>(e => e.ApplicationUserRef)
                 .OnDelete(DeleteBehavior.Restrict);
-
         }
     }
 }

@@ -30,15 +30,5 @@ namespace ExpenseTracker.Application.ViewModels.Expense
             profile.CreateMap<NewExpenseVm, ExpenseTracker.Domain.Model.Entity.Expense>()
                 .ForMember(d => d.DetailedCategoryId, opt => opt.MapFrom(s => s.SelectedCategory));
         }
-
-    }
-
-    public class NewExpenseValidation : AbstractValidator<NewExpenseVm>
-    {
-        public NewExpenseValidation()
-        {
-            RuleFor(x => x.Name).NotEmpty().NotNull().MinimumLength(2);
-            RuleFor(x => x.Amount).NotEmpty();
-        }
     }
 }

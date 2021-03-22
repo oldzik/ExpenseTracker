@@ -13,5 +13,7 @@ namespace ExpenseTracker.Domain.Interface
         PlannedExpense GetPlannedExpenseOfDetailedCat(int detailedCatid, DateTime monthOfYear);
         PlannedExpense GetPlannedExpenseById(int plannedExpenseId);
         void UpdatePlannedExpense(PlannedExpense plannedExpense);
+        PlannedExpense ReturnFirstPlannedExpInMainCategory(int mainCatId, DateTime monthOfYear);
+        PlannedExpense ReturnFirstPlannedExpInMonth(DateTime date);
     }
 }

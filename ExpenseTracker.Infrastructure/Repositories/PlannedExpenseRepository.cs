@@ -48,5 +48,19 @@ namespace ExpenseTracker.Infrastructure.Repositories
             _context.Entry(plannedExpense).Property("Amount").IsModified = true;
             _context.SaveChanges();
         }
+
+        public PlannedExpense ReturnFirstPlannedExpInMainCategory(int mainCatId, DateTime monthOfYear)
+        {
+            var plannedExp = _context.PlannedExpenses
+                .Where(e => e.DetailedCategory.MainCategoryId == mainCatId && e.MonthOfYear == monthOfYear).FirstOrDefault();
+            return plannedExp;
+        }
+
+        public PlannedExpense ReturnFirstPlannedExpInMonth(DateTime date)
+        {
+            var exp = _context.PlannedExpenses
+                .Where(e => e.MonthOfYear == date).FirstOrDefault();
+            return exp;
+        }
     }
 }

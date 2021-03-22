@@ -31,20 +31,20 @@ namespace ExpenseTracker.Web.Controllers
             _mainCService = mainCService;
             _detailedCService = detailedCService;
         }
-        //git
+
         public IActionResult Index()
         {
             var userId = _userManager.GetUserId(HttpContext.User);
             var model = _mainCService.GetMainCategoriesForList(userId);
             return View(model);
         }
-        //git
+
         [HttpGet]
         public IActionResult CreateMainCategory()
         {
             return View(new NewMainCategoryVm());
         }
-        //git
+
         [HttpPost]
         public IActionResult CreateMainCategory(NewMainCategoryVm model)
         {
@@ -52,14 +52,14 @@ namespace ExpenseTracker.Web.Controllers
             var id = _mainCService.AddMainCategory(model, userId);
             return RedirectToAction("Index");
         }
-        //git
+
         [HttpGet]
         public IActionResult EditMainCategory(int mainCategoryId)
         {
             var mainCategory = _mainCService.GetMainCategoryForEdit(mainCategoryId);
             return View(mainCategory);
         }
-        //git
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult EditMainCategory(NewMainCategoryVm model)
@@ -71,7 +71,7 @@ namespace ExpenseTracker.Web.Controllers
             }
             return View(model);
         }
-        //git
+
         public IActionResult DeleteMainCategory(int mainCategoryId)
         {
             _budgetService.RemoveFromSumBeforeMainCategoryDelete(mainCategoryId);
@@ -80,15 +80,13 @@ namespace ExpenseTracker.Web.Controllers
         }
 
 
-
         //DETAILED CATEGORIES
-        //git
         public IActionResult DetailedCategories(int mainCategoryId)
         {
             var model = _detailedCService.GetDetailedCategoriesForList(mainCategoryId);
             return View(model);
         }
-        //git
+
         [HttpGet]
         public IActionResult CreateDetailedCategory(int mainCategoryId)
         {
@@ -96,21 +94,21 @@ namespace ExpenseTracker.Web.Controllers
 
             return View(model);
         }
-        //git
+
         [HttpPost]
         public IActionResult CreateDetailedCategory(NewDetailedCategoryVm model)
         {
             var id = _detailedCService.AddDetailedCategory(model);
             return RedirectToAction("DetailedCategories", new { mainCategoryId = model.MainCategoryId});
         }
-        //git
+
         [HttpGet]
         public IActionResult EditDetailedCategory(int detailedCategoryId)
         {
             var detailedCategory = _detailedCService.GetDetailedCategoryForEdit(detailedCategoryId);
             return View(detailedCategory);
         }
-        //git
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult EditDetailedCategory(NewDetailedCategoryVm model)
@@ -122,7 +120,7 @@ namespace ExpenseTracker.Web.Controllers
             }
             return View(model);
         }
-        //git
+
         public IActionResult DeleteDetailedCategory(int detailedCategoryId, int mainCatId)
         {
             _budgetService.RemoveFromSumBeforeDetailedCategoryDelete(detailedCategoryId);

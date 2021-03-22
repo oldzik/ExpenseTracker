@@ -9,6 +9,5 @@ namespace ExpenseTracker.Domain.Model.Entity
     {
         public Budget Budget { get; set; }
         public ICollection<MainCategory> MainCategories { get; set; }
-
     }
 }

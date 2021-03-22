@@ -27,16 +27,23 @@ namespace ExpenseTracker.Web.Controllers
             _userManager = userManager;
         }
 
-        public IActionResult Index(DateTime currentDate)
+        public IActionResult Index(string currentDate)
         {
+            DateTime date = DateTime.Parse(currentDate);
             var userId = _userManager.GetUserId(HttpContext.User);
 
-            var model =  _plannedExpService.GetPlannedExpensesOfAllMainCPerMonth(currentDate, userId);
+            var model =  _plannedExpService.GetPlannedExpensesOfAllMainCPerMonth(date, userId);
             return View(model);
 
         }
 
-        //git
+        public IActionResult GetPlannedExpensesOfMainCategory(string monthOfYear, int mainCategoryId)
+        {
+            DateTime parsedDate = DateTime.Parse(monthOfYear);
+            var model = _plannedExpService.GetPlannedExpensesOfMainCPerMonth(parsedDate, mainCategoryId);
+            return View(model);
+        }
+
         [HttpGet]
         public IActionResult PlanExpensesPerMonth(DateTime monthOfYear)
         {
@@ -50,13 +57,7 @@ namespace ExpenseTracker.Web.Controllers
         public IActionResult PlanExpensesPerMonth(ListNewPlannedExpensePerMonthVm model)
         {
             _plannedExpService.AddPlannedExpensesPerMonth(model);
-            return RedirectToAction("Index", "PlannedExpense", new { monthOfYear = model.MonthOfYear });
-        }
-
-        public IActionResult GetPlannedExpensesOfMainCategory(DateTime monthOfYear, int mainCategoryId)
-        {
-            var model = _plannedExpService.GetPlannedExpensesOfMainCPerMonth(monthOfYear, mainCategoryId);
-            return View(model);
+            return RedirectToAction("Index", "PlannedExpense", new { currentDate = model.MonthOfYear.ToString("d") });
         }
 
         [HttpGet]
@@ -73,12 +74,9 @@ namespace ExpenseTracker.Web.Controllers
             if (ModelState.IsValid)
             {
                 _plannedExpService.UpdatePlannedExpense(model);
-                return RedirectToAction("GetPlannedExpensesOfMainCategory", new { monthOfYear=model.MonthOfYear,mainCategoryId=model.MainCatId});
+                return RedirectToAction("GetPlannedExpensesOfMainCategory", new { monthOfYear=model.MonthOfYear.ToString("d"),mainCategoryId=model.MainCatId});
             }
-
             return View(model);
         }
-
-
     }
 }

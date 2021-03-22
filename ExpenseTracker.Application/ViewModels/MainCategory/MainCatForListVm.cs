@@ -15,7 +15,5 @@ namespace ExpenseTracker.Application.ViewModels.MainCategory
         {
             profile.CreateMap<ExpenseTracker.Domain.Model.Entity.MainCategory, MainCatForListVm>();
         }
-
-
     }
 }

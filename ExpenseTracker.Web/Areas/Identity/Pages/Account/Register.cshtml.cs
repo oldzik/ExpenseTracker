@@ -91,7 +91,7 @@ namespace ExpenseTracker.Web.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User created a new account with password.");
 
-                    //moj kod do utworzenia budgetu,main cateogries i detailed categories dla nowego usera
+                    //Creating budget, main categories and detailed categories for new user.
                     _budgetService.CreateBudgetForNewUser(user.Id);
                     _mainCService.CreateMainCategoriesForNewUser(user.Id);
                     _detailedCService.CreateDetailedCategoriesForNewUser(user.Id);

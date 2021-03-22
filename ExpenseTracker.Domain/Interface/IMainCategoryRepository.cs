@@ -15,5 +15,6 @@ namespace ExpenseTracker.Domain.Interface
         void UpdateMainCategory(MainCategory mainCategory);
         void DeleteMainCategory(int mainCategoryId);
         string GetMainCategoryNameById(int mainCategoryId);
+        int GetCountOfDetailedCategories(int mainCategoryId);
     }
 }

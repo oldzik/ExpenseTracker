@@ -12,6 +12,5 @@ namespace ExpenseTracker.Domain.Model.Entity
 
         public ApplicationUser ApplicationUser { get; set; }
         public ICollection<DetailedCategory> DetailedCategories { get; set; }
-
     }
 }

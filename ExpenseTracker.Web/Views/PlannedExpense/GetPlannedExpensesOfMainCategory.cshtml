@@ -9,49 +9,57 @@
 <h3>
     @Model.MonthOfYear.ToString("MMMM yyyy").ToUpper()
 </h3>
-@if (Model.Count > 0)
+@if (Model.Count == 0)
 {
-    <table class="table">
-        <thead style="background-color:#d0d2d7;">
-            <tr>
-                <th>
-                    Kategoria
-                </th>
-                <th>
-                    Zaplanowane wydatki
-                </th>
-                <th>
-                    Aktualnie wydano
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.PlannedExpOfDetailedCat)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PlannedAmount)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SpentAmount)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edytuj kwotę zaplanowanych wydatków", "EditPlannedExpsOfDetailedCatPerMonth", new { plannedExpenseId = item.PlannedExpenseId })|
-                        @Html.ActionLink("Pokaż wydatki", "GetExpensesOfDetailedCatPerMonth", "Expense", new { monthOfYear = Model.MonthOfYear, detailedCategoryId = item.Id })
-
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <p>Brak kategorii szczegółowych. Dodaj kategorię, by zaplanować wydatki na ten miesiąc...</p>
 }
 else
 {
-    <p>Brak zaplanowanych wydatków na ten miesiąc...</p>
+    @if (Model.Count > 0)
+    {
+        <table class="table">
+            <thead style="background-color:#d0d2d7;">
+                <tr>
+                    <th>
+                        Kategoria
+                    </th>
+                    <th>
+                        Zaplanowane wydatki
+                    </th>
+                    <th>
+                        Aktualnie wydano
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.PlannedExpOfDetailedCat)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DetCategoryName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PlannedAmount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SpentAmount)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edytuj kwotę zaplanowanych wydatków", "EditPlannedExpsOfDetailedCatPerMonth", new { plannedExpenseId = item.Id })|
+                            @Html.ActionLink("Pokaż wydatki", "GetExpensesOfDetailedCatPerMonth", "Expense", new { monthOfYear = Model.MonthOfYear.ToString("dd.MM.yyyy"), detailedCategoryId = item.DetailedCategoryId })
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Brak zaplanowanych wydatków na ten miesiąc...</p>
+    }
 }
+
 @{
     var parmsToPrevious = new Dictionary<string, string>
 {
@@ -69,5 +77,5 @@ else
     <a class="btn btn-success" asp-action="GetPlannedExpensesOfMainCategory" asp-all-route-data="@parmsToNext">Następny miesiąc</a>
 </div>
 <p>
-    <a class="btn btn-outline-secondary" style="margin-top:15px" asp-action="Index" asp-route-monthOfYear="@Model.MonthOfYear">Wróć do listy głównych kategorii</a>
+    <a class="btn btn-outline-secondary" style="margin-top:15px" asp-action="Index" asp-route-currentDate="@Model.MonthOfYear.ToString("d")">Wróć do listy głównych kategorii</a>
 </p>

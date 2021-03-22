@@ -86,7 +86,6 @@ namespace ExpenseTracker.Web.Controllers
             return View("Index", _userManager.Users);
         }
 
-
         private void Errors(IdentityResult result)
         {
             foreach (IdentityError error in result.Errors)

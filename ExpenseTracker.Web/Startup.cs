@@ -19,6 +19,8 @@ using ExpenseTracker.Application.ViewModels.Expense;
 using FluentValidation;
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+
 namespace ExpenseTracker.Web
 {
     public class Startup
@@ -29,6 +31,32 @@ namespace ExpenseTracker.Web
         }
 
         public IConfiguration Configuration { get; }
+
+
+        //Makes that behavior of model binding route data and query strings is changed to culture-sensitive,
+        //not invariant culture as default.
+        public class CulturedQueryStringValueProviderFactory : IValueProviderFactory
+        {
+            public Task CreateValueProviderAsync(ValueProviderFactoryContext context)
+            {
+                if (context == null)
+                {
+                    throw new ArgumentNullException(nameof(context));
+                }
+
+                var query = context.ActionContext.HttpContext.Request.Query;
+                if (query != null && query.Count > 0)
+                {
+                    var valueProvider = new QueryStringValueProvider(
+                        BindingSource.Query,
+                        query,
+                        CultureInfo.CurrentCulture);
+
+                    context.ValueProviders.Add(valueProvider);
+                }
+                return Task.CompletedTask;
+            }
+        }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -42,13 +70,17 @@ namespace ExpenseTracker.Web
             services.AddApplication();
             services.AddInfrastructure();
 
-            services.AddControllersWithViews().AddFluentValidation();
-            services.AddTransient<IValidator<NewExpenseVm>, NewExpenseValidation>();
+            //Continuation of changing behavior of model binding route data and query strings.
+            services.AddControllersWithViews(options =>
+            {
+                var index = options.ValueProviderFactories.IndexOf(
+                    options.ValueProviderFactories.OfType<QueryStringValueProviderFactory>().Single());
+                options.ValueProviderFactories[index] = new CulturedQueryStringValueProviderFactory();
+            });
             services.AddRazorPages();
 
 
         }
-
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -66,7 +98,7 @@ namespace ExpenseTracker.Web
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            //tutaj nowe
+
             var defaultCulture = new CultureInfo("pl-PL");
             var localizationOptions = new RequestLocalizationOptions
             {
@@ -75,11 +107,6 @@ namespace ExpenseTracker.Web
                 SupportedUICultures = new List<CultureInfo> { defaultCulture }
             };
             app.UseRequestLocalization(localizationOptions);
-            /*var supportedCultures = new[] { "pl-PL","en-US" };
-            var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[0])
-                .AddSupportedCultures(supportedCultures)
-                .AddSupportedUICultures(supportedCultures);
-            app.UseRequestLocalization(localizationOptions);*/
 
             app.UseRouting();
 
@@ -93,7 +120,6 @@ namespace ExpenseTracker.Web
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
-
         }
     }
 }
